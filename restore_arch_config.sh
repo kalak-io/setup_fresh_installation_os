@@ -10,10 +10,10 @@ git config --global user.email "cjacquem@student.42.fr"
 if [ -e "~/.ssh/id_rsa" ]; then
     ssh-keygen -t rsa -b 4096 -C "cjacquem@student.42.fr"
     eval "$ssh-agent -s)" && ssh-dd ~/.ssh/id_rsa
-    echo 'Need to add your ssh key in git services.'
 fi
-read -p "It\'s ok ? y or n " answer
-if [ $answer = "n" ]; then
+read -p 'Did you add your ssh keys in git services ? Y or N ' answer
+if [ $answer = 'N' ] || [ $answer = 'n' ]
+then
     exit 1
 fi
 

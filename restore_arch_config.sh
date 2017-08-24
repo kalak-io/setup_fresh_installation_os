@@ -22,10 +22,11 @@ cd ~/Documents/
 if [ ! -d "./projects" ]
 then
     echo "Create projects directory"
-    mkdir ./projects && cd ./projects
+    mkdir ./projects && \
+        cd ./projects
 fi
 #Creation du dossier 42
-if [ ! -d "./projects/42" ]
+if [ ! -d "./42" ]
 then 
     echo "Create 42 projects directory"
     mkdir ./projects/42 && \
@@ -39,11 +40,14 @@ if [ -d "./ft_printf/" ]
 then
     git clone git@github.com:kalak-io/ft_printf.git
 fi
+
 cd ~/Documents/projects/
+
 #Creation du dossier personal
 if [ -d "./personal" ]; then
     echo "Create personal projects directory"
-    mkdir ./personal && cd ./personal
+    mkdir ./personal && \
+        cd ./personal
     if [ ! -d "./configuration/" ]
     then
         git clone git@github.com:kalak-io/configuration.git
@@ -66,12 +70,13 @@ if [ -d "./personal" ]; then
     fi
 fi
 
-cd ..
+cd ~/Documents/projects/
 
 #Creation du dossier professional
 if [ ! -d "./professional" ]; then
     echo "Create professionnal projects directory"
-    mkdir ./professionnal && cd ./professionnal
+    mkdir ./professionnal && \
+        cd ./professionnal
 fi
 
 #Configuration Vim

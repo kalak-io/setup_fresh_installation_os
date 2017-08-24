@@ -100,4 +100,5 @@ ln -s ~/Documents/projects/personal/configuration/gitignore_global \
 
 #Configuration zsh
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm ~/.zshrc
 ln -s ~/Documents/projects/personal/configuration/zshrc ~/.zshrc

@@ -39,7 +39,7 @@ if [ ! -d "./libft/" ]
 then
     git clone git@github.com:kalak-io/libft.git
 fi
-if [ -d "./ft_printf/" ]
+if [ ! -d "./ft_printf/" ]
 then
     git clone git@github.com:kalak-io/ft_printf.git
 fi
@@ -90,7 +90,7 @@ fi
 rm -rf ~/.vimrc ~/.vim
 ln -s ~/Documents/projects/personal/configuration/vimrc ~/.vimrc
 mkdir ~/.vim && mkdir ~/.vim/bundle
-git https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
     vim +PluginInstall +qall
 
 #Configuration gitignore_global

@@ -17,7 +17,7 @@ then
     exit 1
 fi
 
-cd Documents/
+cd ~/Documents/
 #Creation du dossier projects
 if [ ! -d "./projects" ]
 then

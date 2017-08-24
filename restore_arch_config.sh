@@ -89,9 +89,9 @@ fi
 #Configuration Vim
 rm -rf ~/.vimrc ~/.vim
 ln -s ~/Documents/projects/personal/configuration/vimrc ~/.vimrc
-mkdir ~/.vim && mkdir ~/.vim/bundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim && \
-    vim +PluginInstall +qall
+mkdir ~/.vim && mkdir ~/.vim/bundle && cd ~/.vim/bundle
+git clone https://github.com/VundleVim/Vundle.vim.git
+vim +PluginInstall +qall
 
 #Configuration gitignore_global
 rm ~/.gitignore_global

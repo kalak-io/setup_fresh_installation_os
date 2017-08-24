@@ -18,28 +18,28 @@ then
 fi
 
 #Creation du dossier projects
-if [ ! -d "~/Documents/projects" ]
+if [ -d "~/Documents/projects" ]
 then
     echo "Create projects directory"
     mkdir ~/Documents/projects 
 fi
 #Creation du dossier 42
-if [ ! -d "~/Documents/projects/42" ]
+if [ -d "~/Documents/projects/42" ]
 then 
     echo "Create 42 projects directory"
     mkdir ~/Documents/projects/42 && \
         cd ~/Documents/projects/42
 fi
-if [ ! -d "~/Documents/projects/42/libft/" ]
+if [ -d "~/Documents/projects/42/libft/" ]
 then
     git clone git@github.com:kalak-io/libft.git
 fi
-if [ ! -d "~/Documents/projects/42/ft_printf/" ]
+if [ -d "~/Documents/projects/42/ft_printf/" ]
 then
     git clone git@github.com:kalak-io/ft_printf.git
 fi
 #Creation du dossier personal
-if [ ! -d "~/Documents/projects/personal" ]; then
+if [ -d "~/Documents/projects/personal" ]; then
     mkdir ~/Documents/projects/personal
     cd ~/Documents/projects/personal
     git clone git@github.com:kalak-io/configuration.git
@@ -62,7 +62,7 @@ ln -s ~/Documents/projects/personal/configuration/gitignore_global \
 
 
 #Creation du dossier professional
-if [ ! -d "~/Documents/projects/professional" ]; then
+if [ -d "~/Documents/projects/professional" ]; then
     mkdir ~/Documents/projects/professionnal
     cd ~/Documents/projects/professionnal
 fi

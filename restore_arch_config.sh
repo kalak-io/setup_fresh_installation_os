@@ -62,6 +62,10 @@ if [ ! -d "./configuration/" ]
 then
     git clone git@github.com:kalak-io/configuration.git
 fi
+if [ ! -d "./archives_extractor/" ]
+then
+    git clone git@github.com:kalak-io/archives_extractor.git
+fi
 if [ ! -d "./menu_generator/" ]
 then
     git clone git@github.com:kalak-io/menu_generator.git

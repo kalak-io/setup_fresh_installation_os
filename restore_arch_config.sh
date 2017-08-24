@@ -13,20 +13,24 @@ if [ -f "~/.ssh/id_rsa" ]; then
 fi
 echo 'Need to add your ssh key in git services.'
 read -p "It\'s ok ? y or n " answer
-if [ $answer == 'n']; then
+if [ $answer == "n" ]; then
     exit 1
 fi
 
 #Creation du dossier projects
-if [ ! -d "~/Documents/projects" ]; then
+if [ -d "~/Documents/projects" ]; then
 	mkdir ~/Documents/projects
 	cd ~/Documents/projects
 fi
 #Creation du dossier 42
-if [ ! -d "~/Documents/projects/42" ]; then
+if [ -d "~/Documents/projects/42" ]; then
 	mkdir ~/Documents/projects/42 && cd ~/Documents/projects/42
-        git clone git@github.com:kalak-io/libft.git
-        git clone git@github.com:kalak-io/ft_printf.git
+        if [ ! -d "./libft/" ]; then
+            git clone git@github.com:kalak-io/libft.git
+        fi
+        if [ ! -d "./ft_printf/" ]; then
+            git clone git@github.com:kalak-io/ft_printf.git
+        fi
 fi
 #Creation du dossier personal
 if [ ! -d "~/Documents/projects/personal" ]; then

@@ -19,16 +19,16 @@ fi
 
 cd ~/Documents/
 #Creation du dossier projects
-if [ ! -d "./projects" ]
+if [ ! -d "./projects/" ]
 then
     echo "Create projects directory"
     mkdir ./projects
 fi
 
-cd ~/Documents/projects
+cd ~/Documents/projects/
 
 #Creation du dossier 42
-if [ ! -d "./42" ]; then 
+if [ ! -d "./42/" ]; then 
     echo "Create 42 projects directory"
     mkdir ./42
 fi

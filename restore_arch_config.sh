@@ -22,13 +22,15 @@ cd ~/Documents/
 if [ ! -d "./projects" ]
 then
     echo "Create projects directory"
-    mkdir ./projects && \
-        cd ./projects
+    mkdir ./projects
 fi
+
+cd ~/Documents/projects
+
 #Creation du dossier 42
 if [ ! -d "./42" ]; then 
     echo "Create 42 projects directory"
-    mkdir ./projects/42
+    mkdir ./42
 fi
 
 cd ~/Documents/projects/42

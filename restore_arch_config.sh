@@ -26,12 +26,13 @@ then
         cd ./projects
 fi
 #Creation du dossier 42
-if [ ! -d "./42" ]
-then 
+if [ ! -d "./42" ]; then 
     echo "Create 42 projects directory"
-    mkdir ./projects/42 && \
-        cd ./projects/42
+    mkdir ./projects/42
 fi
+
+cd ~/Documents/projects/42
+
 if [ ! -d "./libft/" ]
 then
     git clone git@github.com:kalak-io/libft.git
@@ -44,30 +45,32 @@ fi
 cd ~/Documents/projects/
 
 #Creation du dossier personal
-if [ -d "./personal" ]; then
+if [ ! -d "./personal" ]; then
     echo "Create personal projects directory"
-    mkdir ./personal && \
-        cd ./personal
-    if [ ! -d "./configuration/" ]
-    then
-        git clone git@github.com:kalak-io/configuration.git
-    fi
-    if [ ! -d "./menu_generator/" ]
-    then
-        git clone git@github.com:kalak-io/menu_generator.git
-    fi
-    if [ ! -d "./pepper_dialog_generator/" ]
-    then
-        git clone git@gitlab.com:kalak/pepper_dialog_generator.git
-    fi
-    if [ ! -d "./pepper_conjugation_generator/" ]
-    then
-        git clone git@gitlab.com:kalak/pepper_conjugation_generator.git
-    fi
-    if [ ! -d "./pepper_complete_lexicon/" ]
-    then
-        git clone git@gitlab.com:kalak/pepper_complete_lexicon.git
-    fi
+    mkdir ./personal
+fi
+
+cd ~/Documents/projects/personal
+
+if [ ! -d "./configuration/" ]
+then
+    git clone git@github.com:kalak-io/configuration.git
+fi
+if [ ! -d "./menu_generator/" ]
+then
+    git clone git@github.com:kalak-io/menu_generator.git
+fi
+if [ ! -d "./pepper_dialog_generator/" ]
+then
+    git clone git@gitlab.com:kalak/pepper_dialog_generator.git
+fi
+if [ ! -d "./pepper_conjugation_generator/" ]
+then
+    git clone git@gitlab.com:kalak/pepper_conjugation_generator.git
+fi
+if [ ! -d "./pepper_complete_lexicon/" ]
+then
+    git clone git@gitlab.com:kalak/pepper_complete_lexicon.git
 fi
 
 cd ~/Documents/projects/
@@ -75,9 +78,11 @@ cd ~/Documents/projects/
 #Creation du dossier professional
 if [ ! -d "./professional" ]; then
     echo "Create professionnal projects directory"
-    mkdir ./professionnal && \
-        cd ./professionnal
+    mkdir ./professionnal 
 fi
+
+#cd ~/Documents/projects/professionnal
+# adding professionnal repositories
 
 #Configuration Vim
 rm -rf ~/.vimrc ~/.vim

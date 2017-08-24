@@ -7,13 +7,13 @@ lldb valgrind zsh
 #Git configuration
 git config --global user.name "cjacquem"
 git config --global user.email "cjacquem@student.42.fr"
-if [ -f "~/.ssh/id_rsa" ]; then
+if [ -e "~/.ssh/id_rsa" ]; then
     ssh-keygen -t rsa -b 4096 -C "cjacquem@student.42.fr"
     eval "$ssh-agent -s)" && ssh-dd ~/.ssh/id_rsa
+    echo 'Need to add your ssh key in git services.'
 fi
-echo 'Need to add your ssh key in git services.'
 read -p "It\'s ok ? y or n " answer
-if [ $answer == "n" ]; then
+if [ $answer = "n" ]; then
     exit 1
 fi
 

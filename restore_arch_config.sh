@@ -18,12 +18,12 @@ then
 fi
 
 #Creation du dossier projects
-if [ -d "~/Documents/projects" ]; then
+if [ ! -d "~/Documents/projects" ]; then
 	mkdir ~/Documents/projects
 	cd ~/Documents/projects
 fi
 #Creation du dossier 42
-if [ -d "~/Documents/projects/42" ]; then
+if [ ! -d "~/Documents/projects/42" ]; then
 	mkdir ~/Documents/projects/42 && cd ~/Documents/projects/42
         if [ ! -d "./libft/" ]; then
             git clone git@github.com:kalak-io/libft.git
@@ -59,7 +59,6 @@ ln -s ~/Documents/projects/personal/configuration/gitignore_global \
 if [ ! -d "~/Documents/projects/professional" ]; then
 	mkdir ~/Documents/projects/professionnal
         cd ~/Documents/projects/professionnal
-
 fi
 cd
 #Configuration zsh

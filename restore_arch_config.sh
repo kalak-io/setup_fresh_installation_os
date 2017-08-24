@@ -4,8 +4,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]
 then
     sudo pacman -Rsc firefox hexchat || \
         sudo pacman -Syu && \
-        sudo pacman -S git terminator vlc aria2 chromium bleachbit vim transmission \
-        lldb valgrind zsh clang ccache python-pip clamav
+        sudo pacman -S git terminator vlc aria2 chromium bleachbit vim \
+        transmission lldb valgrind zsh clang ccache python-pip clamav p7zip \
+        p7zip-plugins unrar tar rsync
 fi
 
 read -p 'Do you want install codecs ? Y or N ' answer

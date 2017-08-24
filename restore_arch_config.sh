@@ -1,8 +1,12 @@
 #!/bin/bash
-sudo pacman -Rsc firefox hexchat || \
-    sudo pacman -Syu && \
-    sudo pacman -S git terminator vlc aria2 chromium bleachbit vim transmission \
-    lldb valgrind zsh
+read -p 'Do you want configure your softwares ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]
+then
+    sudo pacman -Rsc firefox hexchat || \
+        sudo pacman -Syu && \
+        sudo pacman -S git terminator vlc aria2 chromium bleachbit vim transmission \
+        lldb valgrind zsh
+fi
 
 #Git configuration
 git config --global user.name "cjacquem"

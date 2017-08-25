@@ -1,11 +1,19 @@
 #!/bin/bash
-read -p 'Do you want configure your softwares ? Y or N ' answer
+read -p 'Do you want install your softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]
 then
     sudo pacman -Rsc firefox hexchat || \
         sudo pacman -Syu && \
         sudo pacman -S git terminator vlc aria2 chromium bleachbit vim \
-        transmission lldb valgrind zsh clang ccache python-pip clamav
+        transmission-cli transmission-gtk lldb valgrind zsh clang ccache clamav \
+        python-pip
+fi
+
+read -p 'Do you want install your python modules ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]
+then
+    # Python install
+    sudo python -m pip install flake8
 fi
 
 read -p 'Do you want install archivers ? Y or N ' answer

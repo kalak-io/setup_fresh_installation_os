@@ -3,9 +3,9 @@ read -p 'Do you want install your softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo pacman -Rsc firefox hexchat || \
         sudo pacman -Syu && \
-        sudo pacman -S git terminator vlc aria2 chromium bleachbit vim \
-        transmission-cli transmission-gtk lldb valgrind zsh clang ccache clamav \
-        python-pip yaourt
+        sudo pacman -S git terminator vlc aria2 chromium pepper-flash bleachbit \
+        vim transmission-cli transmission-gtk lldb valgrind zsh clang ccache \
+        clamav python-pip yaourt
 fi
 
 read -p 'Do you want install your AUR softwares ? Y or N ' answer

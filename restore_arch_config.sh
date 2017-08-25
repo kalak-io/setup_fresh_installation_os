@@ -5,8 +5,14 @@ then
     sudo pacman -Rsc firefox hexchat || \
         sudo pacman -Syu && \
         sudo pacman -S git terminator vlc aria2 chromium bleachbit vim \
-        transmission lldb valgrind zsh clang ccache python-pip clamav p7zip \
-        p7zip-plugins unrar tar rsync
+        transmission lldb valgrind zsh clang ccache python-pip clamav
+fi
+
+read -p 'Do you want install archivers ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]
+then
+    sudo pacman -Syu && \
+        sudo pacman -S p7zip unrar tar rsync arj cabextract rpmextract
 fi
 
 read -p 'Do you want install codecs ? Y or N ' answer

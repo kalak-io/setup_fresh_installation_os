@@ -1,38 +1,37 @@
 #!/bin/bash
 read -p 'Do you want install your softwares ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo pacman -Rsc firefox hexchat || \
         sudo pacman -Syu && \
         sudo pacman -S git terminator vlc aria2 chromium bleachbit vim \
         transmission-cli transmission-gtk lldb valgrind zsh clang ccache clamav \
-        python-pip
+        python-pip yaourt
 fi
 
+read -p 'Do you want install your AUR softwares ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    yaourt -S spotify slack-desktop syncthing syncthing-gtk
+fi
 read -p 'Do you want install your python modules ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     # Python install
     sudo python -m pip install flake8
 fi
 
 read -p 'Do you want install archivers ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo pacman -Syu && \
         sudo pacman -S p7zip unrar tar rsync arj cabextract rpmextract
 fi
 
 read -p 'Do you want install codecs ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo pacman -S exfat-utils fuse-exfat a52dec faac faad2 flac jasper lame libdca libdv gst-libav libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore flashplugin libdvdcss libdvdread libdvdnav dvd+rw-tools dvdauthor dvgrab
 fi
 
 #Git configuration
 read -p 'Do you want configure your git repositories ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     git config --global user.name "cjacquem"
     git config --global user.email "cjacquem@student.42.fr"
     if [ -e "~/.ssh/id_rsa" ]; then
@@ -40,15 +39,13 @@ then
         eval "$ssh-agent -s)" && ssh-dd ~/.ssh/id_rsa
     fi
     read -p 'Did you add your ssh keys in git services ? Y or N ' answer
-    if [ $answer = 'N' ] || [ $answer = 'n' ]
-    then
+    if [ $answer = 'N' ] || [ $answer = 'n' ]; then
         exit 1
     fi
 
     cd ~/Documents/
     #Creation du dossier projects
-    if [ ! -d "./projects/" ]
-    then
+    if [ ! -d "./projects/" ]; then
         echo "Create projects directory"
         mkdir ./projects
     fi
@@ -63,12 +60,10 @@ then
 
     cd ~/Documents/projects/42
 
-    if [ ! -d "./libft/" ]
-    then
+    if [ ! -d "./libft/" ]; then
         git clone git@github.com:kalak-io/libft.git
     fi
-    if [ ! -d "./ft_printf/" ]
-    then
+    if [ ! -d "./ft_printf/" ]; then
         git clone git@github.com:kalak-io/ft_printf.git
     fi
 
@@ -82,32 +77,25 @@ then
 
     cd ~/Documents/projects/personal
 
-    if [ ! -d "./configuration/" ]
-    then
+    if [ ! -d "./configuration/" ]; then
         git clone git@github.com:kalak-io/configuration.git
     fi
-    if [ ! -d "./archives_extractor/" ]
-    then
+    if [ ! -d "./archives_extractor/" ]; then
         git clone git@github.com:kalak-io/archives_extractor.git
     fi
-    if [ ! -d "./menu_generator/" ]
-    then
+    if [ ! -d "./menu_generator/" ]; then
         git clone git@github.com:kalak-io/menu_generator.git
     fi
-    if [ ! -d "./pepper_dialog_generator/" ]
-    then
+    if [ ! -d "./pepper_dialog_generator/" ]; then
         git clone git@gitlab.com:kalak/pepper_dialog_generator.git
     fi
-    if [ ! -d "./pepper_conjugation_generator/" ]
-    then
+    if [ ! -d "./pepper_conjugation_generator/" ]; then
         git clone git@gitlab.com:kalak/pepper_conjugation_generator.git
     fi
-    if [ ! -d "./pepper_complete_lexicon/" ]
-    then
+    if [ ! -d "./pepper_complete_lexicon/" ]; then
         git clone git@gitlab.com:kalak/pepper_complete_lexicon.git
     fi
-    if [ ! -d "./archives_extractor" ]
-    then
+    if [ ! -d "./archives_extractor" ]; then
         git clone git@gitlab.com:kalak/archives_extractor.git
     fi
 
@@ -121,12 +109,10 @@ then
 
     cd ~/Documents/projects/professionnal
 
-    if [ ! -d "./retail_use_case_robot" ]
-    then
+    if [ ! -d "./retail_use_case_robot" ]; then
         git clone git@gitlab.com:societe-generale/inno-lab/retail_use_case_robot.git
     fi
-    if [ ! -d "./pepper_lab" ]
-    then
+    if [ ! -d "./pepper_lab" ]; then
         git clone git@gitlab.com:societe-generale/inno-lab/pepper_lab.git
     fi
 
@@ -137,8 +123,7 @@ then
 fi
 
 read -p 'Do you want configure vim ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     #Configuration Vim
     rm -rf ~/.vimrc ~/.vim
     ln -s ~/Documents/projects/personal/configuration/vimrc ~/.vimrc
@@ -149,8 +134,7 @@ fi
 
 #Configuration zsh
 read -p 'Do you want install oh-my-zsh ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]
-then
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     rm ~/.zshrc
     ln -s ~/Documents/projects/personal/configuration/zshrc ~/.zshrc

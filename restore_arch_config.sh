@@ -133,6 +133,7 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     mkdir ~/.vim && mkdir ~/.vim/bundle && cd ~/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git
     vim +PluginInstall +qall
+	cd
 fi
 
 #Configuration zsh

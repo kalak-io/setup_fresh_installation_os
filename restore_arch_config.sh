@@ -102,6 +102,10 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
         git clone git@gitlab.com:kalak/archives_extractor.git
     fi
 
+    if [ ! -d "./restore_arch_config" ]; then
+        git clone git@gitlab.com:kalak/restore_arch_config.git
+    fi
+
     cd ~/Documents/projects/
 
     #Creation du dossier professional

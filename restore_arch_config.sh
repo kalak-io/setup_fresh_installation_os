@@ -66,6 +66,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./ft_printf/" ]; then
         git clone git@github.com:kalak-io/ft_printf.git
     fi
+    if [ ! -d "./computor_v1/" ]; then
+        git clone git@github.com:kalak-io/computor_v1.git
+    fi
 
     cd ~/Documents/projects/
 

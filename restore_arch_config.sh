@@ -66,6 +66,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./ft_printf/" ]; then
         git clone git@github.com:kalak-io/ft_printf.git
     fi
+    if [ ! -d "./computor_v1/" ]; then
+        git clone git@github.com:kalak-io/computor_v1.git
+    fi
 
     cd ~/Documents/projects/
 
@@ -97,6 +100,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     fi
     if [ ! -d "./archives_extractor" ]; then
         git clone git@gitlab.com:kalak/archives_extractor.git
+    fi
+    if [ ! -d "./restore_arch_config" ]; then
+        git clone git@github.com:kalak-io/restore_arch_config.git
     fi
 
     cd ~/Documents/projects/
@@ -130,6 +136,7 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     mkdir ~/.vim && mkdir ~/.vim/bundle && cd ~/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git
     vim +PluginInstall +qall
+	cd
 fi
 
 #Configuration zsh

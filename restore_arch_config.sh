@@ -5,7 +5,8 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
         sudo pacman -Syu && \
         sudo pacman -S git terminator vlc aria2 chromium pepper-flash bleachbit \
         vim transmission-cli transmission-gtk lldb valgrind zsh clang ccache \
-        clamav python-pip yaourt fuse-exfat util-linux exfat-utils
+        clamav python-pip yaourt fuse-exfat util-linux exfat-utils arduino \
+	processing
 fi
 
 read -p 'Do you want install your AUR softwares ? Y or N ' answer

@@ -20,7 +20,7 @@ fi
 read -p 'Do you want install your webdev environment ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     # stack docker-reactjs-ngrok
-    yaourt -S ngrok docker docker-compose nodejs ansible npm
+    yaourt -S ngrok docker docker-compose nodejs ansible npm yarn
 fi
 
 read -p 'Do you want install archivers ? Y or N ' answer

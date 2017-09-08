@@ -20,8 +20,18 @@ fi
 read -p 'Do you want install your webdev environment ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     # stack docker-reactjs-ngrok
-    yaourt -S ngrok docker docker-compose nodejs ansible npm yarn
+    yaourt -S ngrok docker docker-composei virtualbox qt5-x11extras nodejs \
+	ansible npm yarn nvm
 fi
+read -p 'Do you want configure Docker and npm ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    echo 'source /usr/share/nvm/init-nvm.sh' >> ~/.zshrc && \
+    sh /usr/share/nvm/init-nvm.sh && \
+    docker-machine create default && \
+    docker-machine start default && \
+    docker-compose up
+fi
+
 
 read -p 'Do you want install archivers ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then

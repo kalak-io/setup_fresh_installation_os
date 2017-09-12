@@ -20,8 +20,8 @@ fi
 read -p 'Do you want install your webdev environment ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     # stack docker-reactjs-ngrok
-    yaourt -S ngrok docker docker-compose virtualbox qt5-x11extras nodejs \
-	ansible npm yarn nvm
+    yaourt -S ngrok docker docker-compose docker-machine virtualbox \
+	qt5-x11extras nodejs ansible npm yarn nvm
 fi
 read -p 'Do you want configure Docker and npm ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then

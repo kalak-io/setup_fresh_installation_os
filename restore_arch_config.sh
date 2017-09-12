@@ -1,7 +1,7 @@
 #!/bin/bash
 read -p 'Do you want install your softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
-    sudo pacman -Rsc firefox hexchat empathy || \
+    sudo pacman -Rsc firefox hexchat empathy brasero evolution || \
         sudo pacman -Syu && \
         sudo pacman -S git terminator vlc aria2 chromium pepper-flash bleachbit \
         vim transmission-cli transmission-gtk lldb valgrind zsh clang ccache \
@@ -24,6 +24,9 @@ fi
 read -p 'Do you want install your AUR softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     yaourt -S spotify slack-desktop syncthing syncthing-gtk libinput-gestures
+    sudo gpasswd -a $USER input
+    libinput-gestures-setup start
+    libinput-gestures-setup autostart
 fi
 read -p 'Do you want install your python modules ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then

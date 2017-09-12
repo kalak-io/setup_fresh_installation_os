@@ -1,11 +1,24 @@
 #!/bin/bash
 read -p 'Do you want install your softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
-    sudo pacman -Rsc firefox hexchat || \
+    sudo pacman -Rsc firefox hexchat empathy || \
         sudo pacman -Syu && \
         sudo pacman -S git terminator vlc aria2 chromium pepper-flash bleachbit \
         vim transmission-cli transmission-gtk lldb valgrind zsh clang ccache \
-        clamav python-pip yaourt fuse-exfat util-linux exfat-utils
+        clamav python-pip yaourt fuse-exfat util-linux exfat-utils preload
+fi
+
+read -p 'Do you want optimize Pacman ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    sudo pacman-db-upgrade && sudo pacman-optimize && sync
+fi
+
+read -p 'Do you want change some permissions ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    sudo usermod -aG log $LOGNAME
+    sudo chown -R $LOGNAME /usr/share
+    sudo gpasswd -a $LOGNAME wheel
+    sudo systemctl enable fstrim.timer
 fi
 
 read -p 'Do you want install your AUR softwares ? Y or N ' answer
@@ -160,4 +173,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     rm ~/.zshrc
     ln -s ~/Documents/projects/personal/configuration/zshrc ~/.zshrc
+fi
+
+read -p 'Do you want to reboot ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    sudo reboot
 fi

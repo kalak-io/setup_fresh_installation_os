@@ -112,7 +112,8 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     cd ~/Documents/projects/personal
 
     if [ ! -d "./configuration/" ]; then
-        git clone git@github.com:kalak-io/configuration.git
+        git clone git@github.com:kalak-io/configuration.git && \
+	    sh ./configuration/scaling_spotify.sh
     fi
     if [ ! -d "./archives_extractor/" ]; then
         git clone git@github.com:kalak-io/archives_extractor.git

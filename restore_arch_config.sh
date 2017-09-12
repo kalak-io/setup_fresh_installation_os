@@ -97,6 +97,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./computor_v1/" ]; then
         git clone git@github.com:kalak-io/computor_v1.git
     fi
+    if [ ! -d "./docker-1/" ]; then
+        git clone git@github.com:kalak-io/docker-1.git
+    fi
 
     cd ~/Documents/projects/
 

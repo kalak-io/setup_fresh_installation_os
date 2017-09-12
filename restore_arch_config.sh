@@ -23,7 +23,7 @@ fi
 
 read -p 'Do you want install your AUR softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
-    yaourt -S spotify slack-desktop syncthing syncthing-gtk
+    yaourt -S spotify slack-desktop syncthing syncthing-gtk libinput-gestures
 fi
 read -p 'Do you want install your python modules ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then

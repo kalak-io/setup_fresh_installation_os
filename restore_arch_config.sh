@@ -1,4 +1,5 @@
 #!/bin/bash
+
 read -p 'Do you want install your softwares ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo pacman -Rsc firefox hexchat empathy brasero evolution || \
@@ -167,7 +168,7 @@ read -p 'Do you want configure vim ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     #Configuration Vim
     rm -rf ~/.vimrc ~/.vim
-    ln -s ~/Documents/projects/personal/configuration/vimrc ~/.vimrc
+    ln -s ~/Documents/projects/personal/configuration/myvimrc ~/.myvimrc
     mkdir ~/.vim && mkdir ~/.vim/bundle && cd ~/.vim/bundle
     git clone https://github.com/VundleVim/Vundle.vim.git
     vim +PluginInstall +qall
@@ -179,7 +180,7 @@ read -p 'Do you want install oh-my-zsh ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
     rm ~/.zshrc
-    ln -s ~/Documents/projects/personal/configuration/zshrc ~/.zshrc
+    ln -s ~/Documents/projects/personal/configuration/myzshrc ~/.myzshrc
 fi
 
 read -p 'Do you want to reboot ? Y or N ' answer

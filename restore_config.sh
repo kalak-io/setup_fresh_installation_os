@@ -41,10 +41,10 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 fi
 
 read -p 'Do you want configure Termux ? Y or N ' answer
-    if [ $answer = 'Y' -o $answer = 'y' ]; then
-	termux-setup-storage
-	apt update && apt upgrade
-	pkg install vim python git zsh 
+if [[ $answer = 'Y' || $answer = 'y' ]]; then
+    termux-setup-storage
+    apt update && apt upgrade
+    pkg install vim python git zsh 
 fi
 
 read -p 'Do you want install your python modules ? Y or N ' answer

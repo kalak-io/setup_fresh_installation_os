@@ -40,12 +40,10 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
     fi
 fi
 
-if [ "$os" == 'Android' ]; then
-    echo $os
-    termux-setup-storage
-    apt update && apt upgrade
-    read -p 'Do you want install your softwares ? Y or N ' answer
+read -p 'Do you want configure Termux ? Y or N ' answer
     if [ $answer = 'Y' -o $answer = 'y' ]; then
+	termux-setup-storage
+	apt update && apt upgrade
 	pkg install vim python git zsh 
 fi
 

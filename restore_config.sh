@@ -38,7 +38,9 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 	sudo gpasswd -a $LOGNAME wheel
 	sudo systemctl enable fstrim.timer
     fi
-else
+fi
+
+if [ "$os" == 'Android' ]; then
     echo $os
     termux-setup-storage
     apt update && apt upgrade

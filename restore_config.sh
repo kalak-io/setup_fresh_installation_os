@@ -38,15 +38,13 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 	sudo gpasswd -a $LOGNAME wheel
 	sudo systemctl enable fstrim.timer
     fi
-
-elif [ "$os" == 'Android' ]; then
+else
     echo $os
     termux-setup-storage
     apt update && apt upgrade
     read -p 'Do you want install your softwares ? Y or N ' answer
     if [ $answer = 'Y' -o $answer = 'y' ]; then
 	pkg install vim python git zsh 
-    fi
 fi
 
 read -p 'Do you want install your python modules ? Y or N ' answer

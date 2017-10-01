@@ -14,6 +14,11 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo pacman-db-upgrade && sudo pacman-optimize && sync
 fi
 
+read -p 'Do you want configure GNOME ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    sudo pacman -S xorg-xprop
+fi
+
 read -p 'Do you want change some permissions ? Y or N ' answer
 if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo usermod -aG log $LOGNAME

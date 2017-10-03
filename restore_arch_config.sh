@@ -46,6 +46,17 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     sudo python -m pip install flake8
 fi
 
+read -p 'Do you want install torrench ? Y or N ' answer
+if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    # Python install
+    sudo python pip install torrench
+    mkdir ~/.config/torrench && cd ~/.config/torrench
+    wget http://s000.tinyupload.com/download.php?file_id=12737623922646772242&t=1273762392264677224298814 -O config.ini
+    sed -i 's/enable = 0/enable = 1/g' config.ini
+    wget https://raw.githubusercontent.com/kryptxy/torrench/master/torrench.ini -O torrench.ini
+    cd ~
+fi
+
 if [ "$os" == 'GNU/Linux' ] ; then
     read -p 'Do you want to reboot ? Y or N ' answer
     if [ $answer = 'Y' ] || [ $answer = 'y' ]; then

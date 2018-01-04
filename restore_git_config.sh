@@ -34,6 +34,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./docker-1/" ]; then
         git clone git@github.com:kalak-io/docker-1.git
     fi
+    if [ ! -d "./expert_system/" ]; then
+        git clone git@github.com:kalak-io/expert-system.git expert_system
+    fi
 
     cd ~/Documents/projects/personal
     echo "Clone personal projects"

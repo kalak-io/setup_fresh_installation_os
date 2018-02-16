@@ -13,7 +13,7 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 	    cabextract rpmextract exfat-utils fuse-exfat a52dec faac faad2 \
 	    flac jasper lame libdca libdv gst-libav libmad libmpeg2 libtheora \
 	    libvorbis libxv wavpack x264 xvidcore flashplugin libdvdcss \
-	    libdvdread libdvdnav dvd+rw-tools dvdauthor dvgrab go
+	    libdvdread libdvdnav dvd+rw-tools dvdauthor dvgrab go powerpill
     fi
 
     read -p 'Do you want optimize Pacman ? Y or N ' answer

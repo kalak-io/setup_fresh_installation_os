@@ -37,6 +37,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./expert_system/" ]; then
         git clone git@github.com:kalak-io/expert-system.git expert_system
     fi
+    if [ ! -d "./DSLR/" ]; then
+        git clone git@github.com:kalak-io/DSLR.git
+    fi
 
     cd ~/Documents/projects/personal
     echo "Clone personal projects"
@@ -51,6 +54,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     fi
     if [ ! -d "./restore_config" ]; then
         git clone git@github.com:kalak-io/restore_config.git
+    fi
+    if [ ! -d "./reduce_pdf_size" ]; then
+        git clone git@github.com:kalak-io/reduce_pdf_size.git
     fi
 
     #Configuration gitignore_global

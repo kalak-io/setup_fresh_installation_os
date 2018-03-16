@@ -7,7 +7,7 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     git config --global user.email "cjacquem@student.42.fr"
     if [ -e "~/.ssh/id_rsa" ]; then
         ssh-keygen -t rsa -b 4096 -C "cjacquem@student.42.fr"
-        eval "$ssh-agent -s)" && ssh-dd ~/.ssh/id_rsa
+        eval "$ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
     fi
     read -p 'Did you add your ssh keys in git services ? Y or N ' answer
     if [ $answer = 'N' ] || [ $answer = 'n' ]; then
@@ -39,6 +39,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     fi
     if [ ! -d "./DSLR/" ]; then
         git clone git@github.com:kalak-io/DSLR.git
+    fi
+    if [ ! -d "./matrice" ]; then 
+	git clone git@gitlab.com:matrice-monaco/scraper.git
     fi
 
     cd ~/Documents/projects/personal

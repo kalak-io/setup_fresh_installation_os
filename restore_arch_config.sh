@@ -4,7 +4,7 @@ os=`uname -o`
 if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
     read -p 'Do you want install your softwares ? Y or N ' answer
     if [ $answer = 'Y' -o $answer = 'y' ]; then
-	sudo pacman -Rsc firefox hexchat empathy brasero evolution || \
+	sudo pacman -Rsc hexchat empathy brasero evolution || \
 	    sudo pacman -Syu && \
 	    sudo pacman -S git terminator vlc aria2 chromium pepper-flash \
 	    bleachbit vim transmission-cli transmission-gtk lldb valgrind \
@@ -23,12 +23,12 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 
     read -p 'Do you want install your AUR softwares ? Y or N ' answer
     if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
-	yaourt -S spotify slack-desktop syncthing syncthing-gtk \
-	libinput-gestures ngrok docker docker-compose docker-machine \
-	virtualbox qt5-x11extras nodejs ansible npm yarn nvm
-	sudo gpasswd -a $USER input
-	libinput-gestures-setup start
-	libinput-gestures-setup autostart
+	yaourt -S spotify slack-desktop \
+	docker docker-compose docker-machine \
+	virtualbox #qt5-x11extras
+	#sudo gpasswd -a $USER input
+	#libinput-gestures-setup start
+	#libinput-gestures-setup autostart
     fi
 
     read -p 'Do you want change some permissions ? Y or N ' answer

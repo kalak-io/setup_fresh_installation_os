@@ -37,10 +37,17 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./expert_system/" ]; then
         git clone git@github.com:kalak-io/expert-system.git expert_system
     fi
+    if [ ! -d "./ft_linear_regression/" ]; then
+	git clone git@github.com:kalak-io/ft_linear_regression.git
+    fi
     if [ ! -d "./DSLR/" ]; then
         git clone git@github.com:kalak-io/DSLR.git
     fi
-    if [ ! -d "./matrice" ]; then 
+
+    # MATRICE REPOSITORIES
+    mkdir -p ~/Documents/projects/42/matrice
+    cd ~/Documents/projects/42/matrice
+    if [ ! -d "./scraper" ]; then
 	git clone git@gitlab.com:matrice-monaco/scraper.git
     fi
 

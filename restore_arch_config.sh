@@ -25,7 +25,7 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
     if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
 	yaourt -S spotify slack-desktop \
 	docker docker-compose docker-machine \
-	virtualbox tlp powerpill #qt5-x11extras
+	virtualbox tlp powerpill torrench #qt5-x11extras
 	#sudo gpasswd -a $USER input
 	#libinput-gestures-setup start
 	#libinput-gestures-setup autostart

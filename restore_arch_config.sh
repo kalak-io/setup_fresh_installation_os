@@ -6,7 +6,7 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
     if [ $answer = 'Y' -o $answer = 'y' ]; then
 	sudo pacman -Rsc hexchat empathy brasero evolution || \
 	    sudo pacman -Syu && \
-	    sudo pacman -S git terminator vlc aria2 tree \
+	    sudo pacman -S git terminator vlc aria2 tree tk \
 	    bleachbit vim transmission-cli transmission-gtk lldb valgrind \
 	    zsh clang ccache clamav python-pip yaourt fuse-exfat util-linux \
 	    exfat-utils preload xorg-xprop p7zip unrar tar rsync arj \

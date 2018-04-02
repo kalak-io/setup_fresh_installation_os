@@ -13,7 +13,7 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 	    cabextract rpmextract exfat-utils fuse-exfat a52dec faac faad2 \
 	    flac jasper lame libdca libdv gst-libav libmad libmpeg2 libtheora \
 	    libvorbis libxv wavpack x264 xvidcore flashplugin libdvdcss \
-	    libdvdread libdvdnav dvd+rw-tools dvdauthor dvgrab go
+	    libdvdread libdvdnav dvd+rw-tools dvdauthor dvgrab
     fi
 
     read -p 'Do you want optimize Pacman ? Y or N ' answer
@@ -25,10 +25,7 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
     if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
 	yaourt -S spotify slack-desktop \
 	docker docker-compose docker-machine \
-	virtualbox tlp powerpill torrench #qt5-x11extras
-	#sudo gpasswd -a $USER input
-	#libinput-gestures-setup start
-	#libinput-gestures-setup autostart
+	virtualbox tlp powerpill
     fi
 
     read -p 'Do you want change some permissions ? Y or N ' answer

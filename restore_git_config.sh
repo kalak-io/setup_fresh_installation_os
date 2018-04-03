@@ -50,6 +50,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./scraper" ]; then
 	git clone git@gitlab.com:matrice-monaco/scraper.git
     fi
+    if [ ! -d "./call_api" ]; then
+	git clone git@gitlab.com:matrice-monaco/call_api.git
+    fi
 
     cd ~/Documents/projects/personal
     echo "Clone personal projects"

@@ -5,7 +5,7 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
     read -p 'Do you want install your softwares ? Y or N ' answer
     if [ $answer = 'Y' -o $answer = 'y' ]; then
 	sudo pacman -Rsc hexchat empathy brasero evolution ms-office-online \
-		jre8-openjdk steam-manjaro || \
+		jre8-openjdk steam-manjaro lollypop || \
 	    sudo pacman -Syu && \
 	    sudo pacman -S git terminator vlc aria2 tree tk \
 	    bleachbit vim transmission-cli transmission-gtk lldb valgrind \

@@ -1,9 +1,9 @@
 #!/bin/bash
 
-os=`uname -o`
-if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
-    read -p 'Do you want install your softwares ? Y or N ' answer
-    if [ $answer = 'Y' -o $answer = 'y' ]; then
+os=$(uname -o)
+if [ "$os" == 'GNU/Linux' ] && [ "$("uname -r | grep MANJARO")" ]; then
+    read -rp 'Do you want install your softwares ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	sudo pacman -Rsc hexchat empathy brasero evolution ms-office-online \
 		jre8-openjdk steam-manjaro lollypop || \
 	    sudo pacman -Syu && sudo pacman-mirrors -c France && \
@@ -17,47 +17,47 @@ if [ "$os" == 'GNU/Linux' -a `uname -r | grep MANJARO` ]; then
 	    libdvdread libdvdnav dvd+rw-tools dvdauthor dvgrab
     fi
 
-    read -p 'Do you want optimize Pacman ? Y or N ' answer
-    if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    read -rp 'Do you want optimize Pacman ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	sudo pacman-db-upgrade && sudo pacman-optimize && sync
     fi
 
-    read -p 'Do you want install your AUR softwares ? Y or N ' answer
-    if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    read -rp 'Do you want install your AUR softwares ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	yaourt -S spotify slack-desktop \
 	docker docker-compose docker-machine \
 	virtualbox powerpill
     fi
 
-    read -p 'Do you want change some permissions ? Y or N ' answer
-    if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
-	sudo usermod -aG log $LOGNAME
-	sudo chown -R $LOGNAME /usr/share
-	sudo gpasswd -a $LOGNAME wheel
+    read -rp 'Do you want change some permissions ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
+	sudo usermod -aG log "$LOGNAME"
+	sudo chown -R "$LOGNAME" /usr/share
+	sudo gpasswd -a "$LOGNAME" wheel
 	sudo systemctl enable fstrim.timer
     fi
 fi
 
-read -p 'Do you want install your python modules ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+read -rp 'Do you want install your python modules ? Y or N ' answer
+if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
     # Python install
     sudo python -m pip install flake8
 fi
 
-read -p 'Do you want install torrench ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+read -rp 'Do you want install torrench ? Y or N ' answer
+if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
     # Python install
     sudo python pip install torrench
-    mkdir ~/.config/torrench && cd ~/.config/torrench
+    mkdir ~/.config/torrench && cd ~/.config/torrench || return
     wget http://s000.tinyupload.com/download.php?file_id=12737623922646772242&t=1273762392264677224298814 -O config.ini
     sed -i 's/enable = 0/enable = 1/g' config.ini
     wget https://raw.githubusercontent.com/kryptxy/torrench/master/torrench.ini -O torrench.ini
-    cd ~
+    cd "$HOME" || return
 fi
 
 if [ "$os" == 'GNU/Linux' ] ; then
-    read -p 'Do you want to reboot ? Y or N ' answer
-    if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+    read -rp 'Do you want to reboot ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	sudo reboot
     fi
 fi

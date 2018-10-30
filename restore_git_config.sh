@@ -1,16 +1,16 @@
 #!/bin/bash
 
 #Git configuration
-read -p 'Do you want configure your git repositories ? Y or N ' answer
-if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
+read -rp 'Do you want configure your git repositories ? Y or N ' answer
+if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
     git config --global user.name "cjacquem"
     git config --global user.email "cjacquem@student.42.fr"
-    if [ -e "~/.ssh/id_rsa" ]; then
+    if [ -e "$HOME/.ssh/id_rsa" ]; then
         ssh-keygen -t rsa -b 4096 -C "cjacquem@student.42.fr"
-        eval "$ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
+        eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
     fi
-    read -p 'Did you add your ssh keys in git services ? Y or N ' answer
-    if [ $answer = 'N' ] || [ $answer = 'n' ]; then
+    read -rp 'Did you add your ssh keys in git services ? Y or N ' answer
+    if [ "$answer" = 'N' ] || [ "$answer" = 'n' ]; then
         exit 1
     fi
 
@@ -19,8 +19,9 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     mkdir -p ~/Documents/projects
     mkdir -p ~/Documents/projects/42
     mkdir -p ~/Documents/projects/personal
+    mkdir -p ~/Documents/projects/profesionnal
 
-    cd ~/Documents/projects/42
+    cd ~/Documents/projects/42 || return
     echo "Clone 42 projects"
     if [ ! -d "./libft/" ]; then
         git clone git@github.com:kalak-io/libft.git
@@ -43,10 +44,13 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     if [ ! -d "./DSLR/" ]; then
         git clone git@github.com:kalak-io/DSLR.git
     fi
+    if [ ! -d "./ft_apy/" ]; then
+        git clone git@gitlab.com:kalak/ft_apy.git
+    fi
 
     # MATRICE REPOSITORIES
     mkdir -p ~/Documents/projects/42/matrice
-    cd ~/Documents/projects/42/matrice
+    cd ~/Documents/projects/42/matrice || return
     if [ ! -d "./scraper" ]; then
 	git clone git@gitlab.com:matrice-monaco/scraper.git
     fi
@@ -54,7 +58,8 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
 	git clone git@gitlab.com:matrice-monaco/call_api.git
     fi
 
-    cd ~/Documents/projects/personal
+    # PERSONAL REPOSITORIES
+    cd ~/Documents/projects/personal || return
     echo "Clone personal projects"
     if [ ! -d "./configuration/" ]; then
         git clone git@github.com:kalak-io/configuration.git
@@ -70,6 +75,16 @@ if [ $answer = 'Y' ] || [ $answer = 'y' ]; then
     fi
     if [ ! -d "./reduce_pdf_size" ]; then
         git clone git@github.com:kalak-io/reduce_pdf_size.git
+    fi
+    if [ ! -d "./personal_twitter_bot" ]; then
+        git clone git@gitlab.com:kalak/personal_twitter_bot.git
+    fi
+
+    # PROFESIONNAL REPOSITORIES
+    cd ~/Documents/projects/profesionnal || return
+    echo "Clone profesionnal projects"
+    if [ ! -d "./scrapy_bosch/" ]; then
+	git clone git@gitlab.com:kalak/scrapy_bosch.git
     fi
 
     #Configuration gitignore_global

@@ -1,0 +1,9 @@
+django
+flake8
+selenium
+beautiful-soup
+pandas
+numpy
+matplotlib
+pip
+git+https://github.com/tweepy/tweepy

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 os=$(uname -o)
-if [ "$os" == 'GNU/Linux' ] && [ "$("uname -r | grep MANJARO")" ]; then
+if [ "$os == 'GNU/Linux'" ] && [ "$(uname -r | grep MANJARO)" ]; then
     read -rp 'Do you want install your softwares ? Y or N ' answer
     if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	sudo pacman -Rsc hexchat empathy brasero evolution ms-office-online \
@@ -36,6 +36,13 @@ if [ "$os" == 'GNU/Linux' ] && [ "$("uname -r | grep MANJARO")" ]; then
 	sudo gpasswd -a "$LOGNAME" wheel
 	sudo systemctl enable fstrim.timer
     fi
+elif [ "$(uname -a | grep Ubuntu)" ]; then
+    read -rp 'Do you want install your softwares ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
+	sudo apt install vlc gparted bleachbit transmission-gtk vim \
+	    preload gcc build-essential cmake python3-dev && \
+	sudo snap install ubuntu-restricted-extra spotify slack telegram htop
+    fi
 fi
 
 read -rp 'Do you want install your python modules ? Y or N ' answer
@@ -46,8 +53,7 @@ fi
 
 read -rp 'Do you want install torrench ? Y or N ' answer
 if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
-    # Python install
-    sudo python pip install torrench
+    python3 -m pip install --upgrade torrench --user
     mkdir ~/.config/torrench && cd ~/.config/torrench || return
     wget http://s000.tinyupload.com/download.php?file_id=12737623922646772242&t=1273762392264677224298814 -O config.ini
     sed -i 's/enable = 0/enable = 1/g' config.ini

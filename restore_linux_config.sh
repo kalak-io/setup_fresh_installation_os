@@ -47,8 +47,8 @@ fi
 
 read -rp 'Do you want install your python modules ? Y or N ' answer
 if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
-    pip install --upgrade pip \
-    && pip install --no-cache-dir -r ./requirements.pip
+    pip3 install --upgrade pip \
+    && pip3 install --no-cache-dir -r ./requirements.pip
 fi
 
 read -rp 'Do you want install torrench ? Y or N ' answer
@@ -61,7 +61,7 @@ if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
     cd "$HOME" || return
 fi
 
-if [ "$os" == 'GNU/Linux' ] ; then
+if [ "$os == 'GNU/Linux'" ] ; then
     read -rp 'Do you want to reboot ? Y or N ' answer
     if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	sudo reboot

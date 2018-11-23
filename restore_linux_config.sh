@@ -39,9 +39,12 @@ if [ "$os == 'GNU/Linux'" ] && [ "$(uname -r | grep MANJARO)" ]; then
 elif [ "$(uname -a | grep Ubuntu)" ]; then
     read -rp 'Do you want install your softwares ? Y or N ' answer
     if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
+	sudo apt update && sudo apt upgrade && \
 	sudo apt install vlc gparted bleachbit transmission-gtk vim \
-	    preload gcc build-essential cmake python3-dev && \
-	sudo snap install ubuntu-restricted-extra spotify slack telegram htop
+	    preload gcc build-essential cmake python3-dev \
+	    ubuntu-restricted-extras && \
+	sudo snap install slack --classic && \
+	sudo snap spotify telegram htop
     fi
 fi
 

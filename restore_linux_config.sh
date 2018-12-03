@@ -42,7 +42,8 @@ elif [ "$(uname -a | grep Ubuntu)" ]; then
 	sudo apt update && sudo apt upgrade && \
 	sudo apt install vlc gparted bleachbit transmission-gtk vim \
 	    preload gcc build-essential cmake python3-dev \
-	    ubuntu-restricted-extras simple-scan gnome-tweak-tool && \
+	    ubuntu-restricted-extras simple-scan gnome-tweak-tool exfat-fuse \
+	    exfat-utils && \
 	sudo snap install slack --classic && \
 	sudo snap spotify telegram htop
     fi

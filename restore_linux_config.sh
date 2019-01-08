@@ -66,6 +66,11 @@ if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 fi
 
 if [ "$os == 'GNU/Linux'" ] ; then
+    read -rp 'Do you want install Anaconda ? Y or N ' answer
+    if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
+	wget --output-document=/tmp/anaconda.sh https://repo.continuum.io/archive/Anaconda3-2018.12-Linux-x86_64.sh /tmp/anaconda.sh
+	sh /tmp/anaconda.sh
+    fi
     read -rp 'Do you want to reboot ? Y or N ' answer
     if [ "$answer" = 'Y' ] || [ "$answer" = 'y' ]; then
 	sudo reboot

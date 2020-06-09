@@ -1,7 +1,6 @@
 #!/bin/bash
 
-COMMON_PACKAGES=(git terminator vlc aria2 tree bleachbit vim transmission-cli transmission-gtk htop gparted preload zsh)
-BROWSER_PACKAGES=(chromium-browser)
+COMMON_PACKAGES=(git terminator vlc aria2 tree bleachbit vim transmission-cli transmission-gtk htop gparted preload zsh chromium-browser)
 
 CURRENT_OS=$(uname -o)
 if [ "$CURRENT_OS == 'GNU/Linux'" ] && [ "$(uname -r | grep MANJARO)" ]; then
@@ -85,6 +84,10 @@ elif [ "$(uname -a | grep Ubuntu)" ]; then
 	sudo usermod -aG docker $LOGNAME && \
 	docker run hello-world
     fi
+elif [ "$CURRENT_OS == 'Android'" ]; then
+    termux-setup-storage
+    apt update && apt upgrade
+    pkg install vim python git zsh curl wget
 fi
 
 read -rp 'Do you want install your python modules ? Y or N ' answer

@@ -1,11 +1,9 @@
 FROM ubuntu:20.04
 
-RUN apt update && \
-      apt install -y sudo
-
+RUN apt-get update
+RUN apt-get install -y wget sudo
 RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
 
-USER docker
+CMD ["/bin/bash"]
 
-ADD setup.sh /setup.sh
-RUN /setup.sh
+USER docker

@@ -12,5 +12,13 @@ sh -c "$(wget  https://raw.githubusercontent.com/kalak-io/setup_fresh_installati
 # Test scripts in container Docker
 
 ```sh
-docker build .
+docker build -t ubuntu-image .
+docker run -d --name test-container ubuntu-image sleep infinity
+docker exec -it test-container bash
+```
+
+In shell container
+
+```sh
+sh -c "$(wget  https://raw.githubusercontent.com/kalak-io/setup_fresh_installation_os/master/setup.sh -O -)"
 ```

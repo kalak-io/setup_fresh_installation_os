@@ -1,0 +1,23 @@
+*DS_Store
+*.swp
+*.a
+*.o
+obj/
+.obj_exists
+Project Logs */
+*.log
+.*
+*.zip
+a.out
+*.dSYM
+*.pdf
+draft/
+./bin/
+*.pyc
+__pycache__/
+/dist/
+/*.egg.info
+myvenv
+*.sqlite3
+credentials.py
+data/

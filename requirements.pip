@@ -1,7 +1,0 @@
-django
-flake8
-selenium
-pandas
-numpy
-matplotlib
-git+https://github.com/tweepy/tweepy

@@ -102,6 +102,7 @@ alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduc
 
 alias python="/usr/bin/python3"
 alias unifai="cd $HOME/Documents/projects/professional/unifai"
+alias personal="cd $HOME/Documents/projects/personal"
 
 # Common Mistakes
 alias ct='cat'

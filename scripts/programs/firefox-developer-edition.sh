@@ -3,7 +3,7 @@
 echo "Installing Firefox Developer Edition"
 aria2c https://download.mozilla.org/\?product\=firefox-devedition-latest-ssl\&os\=linux64\&lang\=en-US
 tar xjf firefox-*.tar.bz2 && rm -f firefox-*.tar.bz2
-sudo mv firefox /opt/firefox-de
+sudo mv ./firefox /opt/firefox-de
 sudo chown -R $USER /opt/firefox-de
 cat > ~/.local/share/applications/firefoxDeveloperEdition.desktop <<EOL
 [Desktop Entry]

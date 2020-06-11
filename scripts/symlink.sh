@@ -21,4 +21,4 @@ rm -rf $HOME/.config/libinput-gestures.conf
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.config/libinput-gestures.conf $HOME/.config/libinput-gestures.conf
 # terminator
 rm -rf $HOME/.config/terminator
-ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.config/terminator/ $HOME/.config/terminator/
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.config/terminator $HOME/.config/terminator

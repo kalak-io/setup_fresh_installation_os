@@ -17,6 +17,7 @@
     template = ~/.gitmessage
 [core]
     editor = vim
+	excludesfile = /home/kalak/.gitignore_global
 [push]
     followTags = true
     default = current

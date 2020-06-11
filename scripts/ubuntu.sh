@@ -29,10 +29,15 @@ APT_PACKAGES="
     build-essential
     simple-scan
     gnome-tweak-tool
+    firefox-gnome-shell
     exfat-fuse
     exfat-utils
     python3-pip
     xclip
+    rar
+    unrar
+    p7zip-full
+    p7zip-rar
 "
 
 # Add tierce repository

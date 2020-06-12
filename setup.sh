@@ -12,9 +12,7 @@ cd $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts
 sudo chmod u+x ./*.sh ./programs/*.sh
 
 ./symlink.sh
-if [ "$(uname -a | grep Ubuntu)" ]; then
-    ./ubuntu.sh
-fi
+./ubuntu.sh
 ./repositories.sh
 
 echo "Finish ! You can reboot the system."

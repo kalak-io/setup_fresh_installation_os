@@ -13,7 +13,7 @@ rm -f $HOME/.gitmessage
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.gitmessage $HOME/.gitmessage
 # .zshrc
 rm -f $HOME/.oh-my-zsh
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 rm -f $HOME/.zshrc $HOME/.zshrc.pre-oh-my-zsh
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.zshrc $HOME/.zshrc
 # libinput-gestures.conf

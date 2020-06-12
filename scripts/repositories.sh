@@ -34,7 +34,7 @@ for p in $PERSONAL; do
 done
 
 # UNiFAi repositories
-mkdir -p $HOME/Documents/projects/profesionnal/unifai && cd $_
+mkdir -p $HOME/Documents/projects/professional/unifai && cd $_
 for u in $UNIFAI; do
     git clone $u;
 done

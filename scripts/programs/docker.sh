@@ -13,6 +13,6 @@ sudo add-apt-repository \
    $(lsb_release -cs) \
    stable"
 sudo apt-fast update
-sudo apt-fast install -y docker-ce docker-ce-cli containerd.io
+sudo apt-fast install -y docker-ce docker-ce-cli containerd.io docker-compose
 sudo usermod -aG docker $LOGNAME
 sudo docker run hello-world

@@ -5,7 +5,7 @@ PPA="
     ppa:linrunner/tlp
 "
 
-APT_PACKAGES="
+APT_PACKAGES=(
     ubuntu-restricted-extras
     curl
     chromium-browser
@@ -29,7 +29,6 @@ APT_PACKAGES="
     build-essential
     simple-scan
     gnome-tweak-tool
-    firefox-gnome-shell
     exfat-fuse
     exfat-utils
     python3-pip
@@ -38,7 +37,7 @@ APT_PACKAGES="
     unrar
     p7zip-full
     p7zip-rar
-"
+)
 
 # Add tierce repository
 for ppa in $PPA; do
@@ -57,7 +56,7 @@ sudo apt purge -y ubuntu-web-launchers thunderbird
 sudo apt-fast full-upgrade -y
 
 # Install packages
-sudo apt-fast install -y $APT_PACKAGES
+sudo apt-fast install -y ${APT_PACKAGES[*]}
 
 # Install programs
 for f in programs/*.sh; do

@@ -99,6 +99,7 @@ source $ZSH/oh-my-zsh.sh
 alias MAJ="sudo apt-fast update && sudo apt-fast upgrade -y"
 alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
 alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
+alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
 
 alias python="/usr/bin/python3"
 alias unifai="cd $HOME/Documents/projects/professional/unifai"

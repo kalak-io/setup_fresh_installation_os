@@ -37,6 +37,7 @@ APT_PACKAGES=(
     unrar
     p7zip-full
     p7zip-rar
+    zram-config
 )
 
 # Add tierce repository
@@ -68,6 +69,14 @@ sudo ufw enable
 
 # Activate tlp
 sudo tlp start
+
+# Configure swapiness
+sudo sysctl -w vm.swappiness=10
+sudo swapoff -a
+sudo swapon -a
+
+# Activate zram
+sudo service zram-config --full-restart
 
 # Clean Up system
 sudo apt autoclean

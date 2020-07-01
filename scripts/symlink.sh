@@ -22,3 +22,6 @@ ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.config/libi
 # terminator
 rm -rf $HOME/.config/terminator
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.config/terminator $HOME/.config/terminator
+# transmission
+rm -rf $HOME/.config/transmission
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/.config/transmission $HOME/.config/transmission

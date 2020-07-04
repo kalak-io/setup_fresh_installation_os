@@ -38,6 +38,7 @@ APT_PACKAGES=(
     p7zip-full
     p7zip-rar
     zram-config
+    adb
 )
 
 # Add tierce repository

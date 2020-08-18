@@ -39,6 +39,8 @@ APT_PACKAGES=(
     p7zip-rar
     zram-config
     adb
+    libreoffice-writer
+    libreoffice-calc
 )
 
 # Add tierce repository
@@ -53,6 +55,10 @@ sudo apt install -y apt-fast
 
 # Remove useless packages
 sudo apt purge -y ubuntu-web-launchers thunderbird
+
+# Remove useless asian languages
+sudo apt remove -y "fonts-kacst*" "fonts-khmeros*" fonts-lklug-sinhala fonts-guru-extra "fonts-nanum*" fonts-noto-cjk "fonts-takao*" fonts-tibetan-machine fonts-lao fonts-sil-padauk fonts-sil-abyssinica "fonts-tlwg-*" "fonts-lohit-*" fonts-beng-extra fonts-gargi fonts-gubbi fonts-gujr-extra fonts-kalapi "fonts-samyak*" fonts-navilu fonts-nakula fonts-orya-extra fonts-pagul fonts-sarai "fonts-telu*" "fonts-wqy*" "fonts-smc*" fonts-deva-extra fonts-sahadeva
+sudo dpkg-reconfigure fontconfig
 
 # Check for updates
 sudo apt-fast full-upgrade -y

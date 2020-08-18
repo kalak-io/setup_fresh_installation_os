@@ -97,6 +97,10 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 alias MAJ="sudo apt-fast update && sudo apt-fast upgrade -y"
+alias clear_apt="sudo apt autoclean && sudo apt clean && sudo apt autoremove -y"
+alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
+alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
+alias clear_history="echo -n '' > $HOME/.*_history"
 alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
 alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
 alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"

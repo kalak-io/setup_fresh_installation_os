@@ -17,7 +17,6 @@ Plugin 'VundleVim/Vundle.vim'
 
 " List of plugins
 Plugin 'lifepillar/vim-solarized8'
-
 Plugin 'dense-analysis/ale'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'posva/vim-vue'

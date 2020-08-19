@@ -57,6 +57,13 @@ set autoindent
 "" Enable hidden buffers
 set hidden
 
+"" History
+set history=500
+
+"" Set to auto read when a file is changed from the outside
+set autoread
+au FocusGained,BufEnter * checktime
+
 "" Searching
 set hlsearch
 set incsearch
@@ -67,6 +74,13 @@ set showmatch
 "" Directories for swp files
 set nobackup
 set noswapfile
+set nowb
+
+"" No annoying sound on errors
+set noerrorbells
+set novisualbell
+set t_vb=
+set tm=500
 
 "*****************************************************************************
 "" Visual Settings

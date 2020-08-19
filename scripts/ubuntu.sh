@@ -8,6 +8,7 @@ PPA="
 APT_PACKAGES=(
     ubuntu-restricted-extras
     curl
+    cmake
     chromium-browser
     make
     terminator

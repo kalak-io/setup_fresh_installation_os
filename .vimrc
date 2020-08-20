@@ -2,8 +2,8 @@
 " PERSONAL VIMRC
 "*****************************************************************************
 if &compatible
-      set nocompatible
-  endif
+  set nocompatible
+endif
 
 filetype off
 " set the runtime path to include Vundle and initialize
@@ -58,11 +58,20 @@ set autoindent
 set hidden
 
 "" History
-set history=500
+set history=100
+
+" Faster refraw
+set ttyfast
+
+" Mouse activated in Normal and Visual Mode
+set mouse=nv
 
 "" Set to auto read when a file is changed from the outside
 set autoread
 au FocusGained,BufEnter * checktime
+
+" Better command-line completion
+set wildmenu
 
 "" Searching
 set hlsearch
@@ -70,6 +79,7 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
+set matchtime=3
 
 "" Directories for swp files
 set nobackup
@@ -82,23 +92,38 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set updatetime=1000
+
+"" Prevent lag when hitting escape
+set ttimeoutlen=0
+set timeoutlen=1000
+au InsertEnter * set timeout
+au InsertLeave * set notimeout
+
+
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
 " UI
 set title
+set titleold="Terminal"
 syntax on
 set ruler
 set number
 set linebreak
 set tw=500
 
+" Highligt the cursor line
+set cursorline
+let &showbreak="\u21aa " " Show a left arrow when wrapping text
+
 " Theme
 set background=dark
 colorscheme solarized8
 
 " Scroll
-set scrolloff=5
+set scrolloff=10 " Always keep 10 lines after or before when scrolling
+set sidescrolloff=5 " Always keep 5 lines after or before when side scrolling
 
 " Splits
 set splitbelow
@@ -141,10 +166,10 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip
 
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
-  \ 'file': '\v\.(exe|so|dll)$',
-  \ 'link': 'some_bad_symbolic_links',
-  \ }
+      \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+      \ 'file': '\v\.(exe|so|dll)$',
+      \ 'link': 'some_bad_symbolic_links',
+      \ }
 " Ignore files in .gitignore
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 
@@ -172,9 +197,9 @@ let g:closetag_emptyTags_caseSensitive = 1
 " dict
 " Disables auto-close if not in a "valid" region (based on filetype)
 let g:closetag_regions = {
-    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-    \ 'javascript.jsx': 'jsxRegion',
-    \ }
+      \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+      \ 'javascript.jsx': 'jsxRegion',
+      \ }
 " Shortcut for closing tags, default is '>'
 let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
@@ -182,6 +207,7 @@ let g:closetag_close_shortcut = '<leader>>'
 
 "" Tagalong
 let g:tagalong_additional_filetypes = ['vue']
+
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************
@@ -191,3 +217,84 @@ imap cll console.log()<Esc>==f(a
 nnoremap <c-s> :w<CR>
 inoremap <c-s> <Esc>:w<CR>a
 vnoremap <c-s> <Esc>:w<CR>
+
+" Usefull shortcuts to enter insert mode
+nnoremap <CR> i<CR>
+nnoremap <Backspace> i<Backspace>
+nnoremap <Space> i<Space>
+
+function! CreateShortcut(keys, cmd, where, ...)
+  let keys = "<" . a:keys . ">"
+  if a:where =~ "i"
+    let i = (index(a:000,"noTrailingIInInsert") > -1) ? "" : "i"
+    let e = (index(a:000,"noLeadingEscInInsert") > -1) ? "" : "<esc>"
+    execute "imap " . keys . " " . e .  a:cmd . i
+  endif
+  if a:where =~ "n"
+    execute "nmap " . keys . " " . a:cmd
+  endif
+  if a:where =~ "v"
+    let k = (index(a:000,"restoreSelectionAfter") > -1) ? "gv" : ""
+    let c = a:cmd
+    if index(a:000,"cmdInVisual") > -1
+      let c = ":<C-u>" . strpart(a:cmd,1)
+    endif
+    execute "vmap " . keys . " " . c . k
+  endif
+endfunction
+
+" Ctrl A - Begin Line
+call CreateShortcut("C-a", "0", "inv")
+
+" Ctrl E - End Line
+call CreateShortcut("C-e", "$l", "inv")
+
+" Home - Go To Begin
+call CreateShortcut("Home", "gg", "inv")
+
+" End - Go To End
+call CreateShortcut("End", "G", "inv")
+
+" Ctrl F - Find
+call CreateShortcut("C-f", "/", "in", "noTrailingIInInsert")
+
+" Ctrl H - Search and Replace
+call CreateShortcut("C-h", ":%s/", "in", "noTrailingIInInsert")
+
+" Pageup - Move up Line
+call CreateShortcut("PageUp", ":m-2<CR>", "inv", "restoreSelectionAfter")
+
+" Pagedown - Move down Line
+call CreateShortcut("PageDown", ":m+<CR>", "in")
+call CreateShortcut("PageDown", ":m'>+<CR>", "v", "restoreSelectionAfter")
+
+" Ctrl C - Quit
+call CreateShortcut("C-c", ":qa!<CR>", "inv", "cmdInVisual")
+
+" Ctrl Z - Undo
+call CreateShortcut("C-z", "u", "in")
+
+" Ctrl R - Redo
+call CreateShortcut("C-r", "<C-r>", "in")
+
+" Ctrl T - New tab
+call CreateShortcut("C-t", ":tabnew<CR>i", "inv", "noTrailingIInInsert", "cmdInVisual")
+
+" Alt Right - Next tab
+call CreateShortcut("A-Right", "gt", "inv")
+
+" Alt Left - Previous tab
+call CreateShortcut("A-Left", "gT", "inv")
+
+" F3 - Line numbers toggle
+call CreateShortcut("f3",":set nonumber!<CR>", "in")
+
+" F6 - Toggle color column at 80th char
+function! ToggleColorColumn()
+  if &colorcolumn != 0
+    windo let &colorcolumn = 0
+  else
+    windo let &colorcolumn = 80
+  endif
+endfunction
+call CreateShortcut("f6",":call ToggleColorColumn()<CR>", "inv")

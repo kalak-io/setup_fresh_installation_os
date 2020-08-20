@@ -74,6 +74,10 @@ plugins=(git docker docker-compose)
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+# Enable control-s and control-q
+stty start undef
+stty stop undef
+setopt noflowcontrol
 
 # export MANPATH="/usr/local/man:$MANPATH"
 

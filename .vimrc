@@ -85,13 +85,27 @@ set tm=500
 "*****************************************************************************
 "" Visual Settings
 "*****************************************************************************
+" UI
+set title
 syntax on
 set ruler
 set number
 set linebreak
+set tw=500
 
+" Theme
 set background=dark
 colorscheme solarized8
+
+" Scroll
+set scrolloff=5
+
+" Splits
+set splitbelow
+set splitright
+
+" Return to last edit position when opening files (You want this!)
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 "*****************************************************************************
 "" Plugins Configuration
@@ -106,6 +120,8 @@ autocmd FileType html,css,vue EmmetInstall
 let g:user_emmet_leader_key=','
 
 "" NERDTree
+" Show hidden files
+let NERDTreeShowHidden=1
 " Open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -170,3 +186,8 @@ let g:tagalong_additional_filetypes = ['vue']
 "" Mappings
 "*****************************************************************************
 imap cll console.log()<Esc>==f(a
+
+" Save with Ctrl + s in Normal and Insert modes
+nnoremap <c-s> :w<CR>
+inoremap <c-s> <Esc>:w<CR>a
+vnoremap <c-s> <Esc>:w<CR>

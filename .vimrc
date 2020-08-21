@@ -30,6 +30,7 @@ Plugin 'bling/vim-airline'
 Plugin 'alvan/vim-closetag'
 Plugin 'andrewradev/tagalong.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'raimondi/delimitmate'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

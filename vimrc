@@ -212,7 +212,16 @@ let g:closetag_close_shortcut = '<leader>>'
 let g:tagalong_additional_filetypes = ['vue']
 
 "" UltiSnips
-let g:UltiSnipsExpandTrigger="<Space>"
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCarriageReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 "*****************************************************************************

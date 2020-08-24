@@ -31,6 +31,8 @@ Plugin 'alvan/vim-closetag'
 Plugin 'andrewradev/tagalong.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'raimondi/delimitmate'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -209,6 +211,10 @@ let g:closetag_close_shortcut = '<leader>>'
 "" Tagalong
 let g:tagalong_additional_filetypes = ['vue']
 
+"" UltiSnips
+let g:UltiSnipsExpandTrigger="<Space>"
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************

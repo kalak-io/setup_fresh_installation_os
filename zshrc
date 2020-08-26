@@ -9,7 +9,7 @@ export ZSH="/home/kalak/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="pygmalion"
+ZSH_THEME="pygmalion-virtualenv"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -28,7 +28,7 @@ ZSH_THEME="pygmalion"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+DISABLE_UPDATE_PROMPT="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
@@ -69,7 +69,7 @@ ZSH_THEME="pygmalion"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose)
+plugins=(git docker docker-compose fzf virtualenv virtualenvwrapper)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -119,3 +119,18 @@ alias im='vim'
 alias s='ls'
 alias gi='git'
 alias pip='pip3'
+
+# External softwares
+# ag
+agvim () {
+  CHOICE=$(ag --color $* | fzf -0 -1 --ansi)
+  if [ ! -z "$CHOICE" ]
+  then
+    vim $( echo "$CHOICE" | awk 'BEGIN { FS=":" } { printf "+%d %s\n", $2, $1 } ')
+  fi
+}
+# Virtualenvwrapper things
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+source $HOME/.local/bin/virtualenvwrapper.sh

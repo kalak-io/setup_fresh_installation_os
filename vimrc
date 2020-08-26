@@ -33,6 +33,7 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'raimondi/delimitmate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'mileszs/ack.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -224,6 +225,12 @@ endfunction
 inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
+
+"" Ack
+"Use ag
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************

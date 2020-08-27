@@ -304,10 +304,10 @@ call CreateShortcut("C-r", "<C-r>", "in")
 call CreateShortcut("C-t", ":tabnew<CR>i", "inv", "noTrailingIInInsert", "cmdInVisual")
 
 " Alt Right - Next tab
-call CreateShortcut("A-Right", "gt", "inv")
+call CreateShortcut("C-Right", "gt", "inv")
 
 " Alt Left - Previous tab
-call CreateShortcut("A-Left", "gT", "inv")
+call CreateShortcut("C-Left", "gT", "inv")
 
 " F3 - Line numbers toggle
 call CreateShortcut("f3",":set nonumber!<CR>", "in")

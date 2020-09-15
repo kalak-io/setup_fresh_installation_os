@@ -28,7 +28,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mg979/vim-visual-multi'
 Plugin 'bling/vim-airline'
 Plugin 'alvan/vim-closetag'
-Plugin 'andrewradev/tagalong.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'raimondi/delimitmate'
 Plugin 'SirVer/ultisnips'
@@ -57,6 +56,7 @@ set expandtab
 set smartindent
 set smarttab
 set autoindent
+execute ":silent tab all"
 
 "" Enable hidden buffers
 set hidden
@@ -116,6 +116,10 @@ set ruler
 set number
 set linebreak
 set tw=500
+set shortmess+=I " No intro when starting Vim
+set virtualedit=onemore " Allow the cursor to move just past the end of the line
+set noshowmode " Don't display the current mode
+set iskeyword+=\- " Complete words containing a dash
 
 " Highligt the cursor line
 set cursorline
@@ -207,7 +211,7 @@ let g:closetag_regions = {
 " Shortcut for closing tags, default is '>'
 let g:closetag_shortcut = '>'
 " Add > at current position without closing the current tag, default is ''
-let g:closetag_close_shortcut = '<leader>>'
+let g:closetag_close_shortcut = ''
 
 "" Tagalong
 let g:tagalong_additional_filetypes = ['vue']

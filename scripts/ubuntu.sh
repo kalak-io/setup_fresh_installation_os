@@ -42,6 +42,7 @@ APT_PACKAGES=(
     libreoffice-writer
     libreoffice-calc
     solaar-gnome3
+    intel-microcode
 )
 
 # Add tierce repository

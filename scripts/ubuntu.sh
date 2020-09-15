@@ -41,6 +41,7 @@ APT_PACKAGES=(
     adb
     libreoffice-writer
     libreoffice-calc
+    solaar-gnome3
 )
 
 # Add tierce repository
@@ -75,7 +76,7 @@ done
 sudo ufw enable
 
 # Activate tlp
-sudo tlp start
+sudo systemctl enable tlp
 
 # Configure swapiness
 sudo sysctl -w vm.swappiness=10

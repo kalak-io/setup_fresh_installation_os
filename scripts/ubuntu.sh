@@ -25,7 +25,6 @@ APT_PACKAGES=(
     zsh
     tlp
     tlp-rdw
-    spotify-client
     gcc
     build-essential
     simple-scan

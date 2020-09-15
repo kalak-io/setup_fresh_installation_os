@@ -10,6 +10,11 @@ UNIFAI="
     git@gitlab.com:unifai/free-trial.git
     git@gitlab.com:unifai/indiana.git
     git@gitlab.com:unifai/indiana-api.git
+    git@gitlab.com:unifai/intersport.git
+    git@gitlab.com:unifai/the-agent.git
+    git@gitlab.com:unifai/mvp-theagent.git
+    git@gitlab.com:unifai/click-and-care.git
+    git@gitlab.com:unifai/self-service.git
 "
 
 echo "Pulling git repositories"

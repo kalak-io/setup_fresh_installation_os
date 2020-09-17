@@ -10,6 +10,8 @@ APT_PACKAGES=(
     curl
     cmake
     chromium-browser
+    silversearcher-ag
+    fzf
     make
     terminator
     vlc
@@ -32,6 +34,7 @@ APT_PACKAGES=(
     exfat-fuse
     exfat-utils
     python3-pip
+    python3-venv
     xclip
     rar
     unrar
@@ -43,6 +46,8 @@ APT_PACKAGES=(
     libreoffice-calc
     solaar-gnome3
     intel-microcode
+    nodejs
+    npm
 )
 
 # Add tierce repository
@@ -69,7 +74,7 @@ sudo apt-fast full-upgrade -y
 sudo apt-fast install -y ${APT_PACKAGES[*]}
 
 # Install programs
-for f in programs/*.sh; do
+for f in programs/ubuntu/*.sh; do
     bash "$f" -H;
 done
 
@@ -86,6 +91,14 @@ sudo swapon -a
 
 # Activate zram
 sudo service zram-config --full-restart
+
+# configure Gnome
+echo "Configuring Gnome shell"
+gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
+gsettings set org.gnome.desktop.interface show-battery-percentage true
+gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
+gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'chromium_chromium.desktop', 'firefox.desktop', 'firefoxDeveloperEdition.desktop', 'slack.desktop', 'spotify.desktop']
 
 # Clean Up system
 sudo apt autoclean

@@ -53,23 +53,25 @@ PACKAGES=(
     curl
     cmake
     make
+    tlp
+    ufw
 )
 
 # Choose pacman-mirrors
-sudo pacman-mirrors -f 0 && sudo pacman -Syy
+sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syy --noconfirm
 
 # Remove useless packages
-yes | sudo pacman -R hplip cups splix
+sudo pacman -R --noconfirm hplip cups splix
 sudo systemctl disable avahi-daemon
 
 # Update
-yes | sudo pacman -Syu
+sudo pacman -Syu --noconfirm
 
 # Install base packages
-yes | sudo pacman -S ${PACKAGES[*]}
+sudo pacman -S --noconfirm ${PACKAGES[*]}
 
 # Install AUR packages
-yes | sudo pamac install ttf-ms-fonts ufw tlp preload slack-desktop
+sudo pamac install --no-confirm preload
 
 # Install programs
 for f in programs/arch/*.sh; do
@@ -77,9 +79,9 @@ for f in programs/arch/*.sh; do
 done
 
 # Configure ZRAM
-yes | pamac install systemd-swap
+sudo pamac install --no-confirm systemd-swap
 sudo systemctl enable systemd-swap.service
-sudo bash -c 'echo -e "zswap_enabled=1\nzram_enabled=0\nswapfc_enabled=1" > /etc/systemd/swap.conf.d/myswap.conf'
+sudo echo -e "zswap_enabled=1\nzram_enabled=0\nswapfc_enabled=1" > /etc/systemd/swap.conf.d/myswap.conf
 
 # Configure Docker
 sudo usermod -aG docker $LOGNAME

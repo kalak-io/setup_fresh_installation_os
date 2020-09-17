@@ -6,9 +6,9 @@ if [ $DISTRO == "Linuxmint" ] || [ $DISTRO == "Ubuntu" ]
 then
     echo "Ubuntu base";
     sudo apt update && sudo apt install -y git
-elif [ $DISTRO == "ManjaroLinux" ]
+elif [ $DISTRO == "ManjaroLinux" ] || [ $DISTRO == "Arch" ]
 then
-    echo "Manjaro";
+    echo "Arch base";
     sudo pacman -Syy && yes | sudo pacman -S git
 else
     echo "Unsupported distro";

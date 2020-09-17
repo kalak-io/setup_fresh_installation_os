@@ -23,10 +23,14 @@ cd $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts
 sudo chmod u+x ./*.sh ./programs/*.sh
 
 # Install specific packages
-if [ $DISTRO == "Linuxmint" ] || [ $DISTRO == "Ubuntu" ]
+if [ $DISTRO == "Ubuntu" ]
 then
-    echo "Ubuntu base";
+    echo "Ubuntu";
     ./ubuntu.sh
+elif [ $DISTRO == "Linuxmint" ]
+then
+    echo "Linux Mint";
+    ./linuxmint.sh
 elif [ $DISTRO == "Manjaro" ]
 then
     echo "Manjaro";

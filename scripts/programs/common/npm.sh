@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 echo "Installing Node & npm"
-sudo apt-fast install -y nodejs npm
+sudo apt install -y nodejs npm
 npm config set prefix $HOME/.npm  
 sudo chown -R $USER $HOME/.npm
 

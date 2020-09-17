@@ -3,7 +3,7 @@
 echo "Installing Gestures"
 # Dependencies
 sudo gpasswd -a $USER input
-sudo apt-fast install -y libinput-tools xdotool
+sudo apt install -y libinput-tools xdotool
 
 # Installation Gestures
 cd

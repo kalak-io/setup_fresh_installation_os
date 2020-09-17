@@ -44,6 +44,18 @@ for f in ./programs/common/*.sh; do
     bash "$f" -H;
 done
 
+if [ $GDMSESSION == 'xfce ']
+then
+    echo "Configuring XFCE"
+    ./de/xfce.sh
+elif [ $GDMSESSION == 'gnome-shell' ]
+then
+    echo "Configuring GNOME SHELL"
+    ./de/gnome-shell.sh
+else
+    echo "Unsupported distro";
+fi
+
 ./symlink.sh
 ./repositories.sh
 

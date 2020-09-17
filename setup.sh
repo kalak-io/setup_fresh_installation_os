@@ -6,7 +6,7 @@ if [ $DISTRO == "Linuxmint" ] || [ $DISTRO == "Ubuntu" ]
 then
     echo "Ubuntu base";
     sudo apt update && sudo apt install -y git
-elif [ $DISTRO == "Manjaro" ]
+elif [ $DISTRO == "ManjaroLinux" ]
 then
     echo "Manjaro";
     sudo pacman -Syy && yes | sudo pacman -S git
@@ -31,7 +31,7 @@ elif [ $DISTRO == "Linuxmint" ]
 then
     echo "Linux Mint";
     ./linuxmint.sh
-elif [ $DISTRO == "Manjaro" ]
+elif [ $DISTRO == "ManjaroLinux" ]
 then
     echo "Manjaro";
     ./manjaro.sh

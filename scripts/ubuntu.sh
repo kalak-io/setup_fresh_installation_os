@@ -74,6 +74,9 @@ sudo apt-fast full-upgrade -y
 sudo apt-fast install -y ${APT_PACKAGES[*]}
 
 # Install programs
+for f in programs/common/*.sh; do
+    bash "$f" -H;
+done
 for f in programs/ubuntu/*.sh; do
     bash "$f" -H;
 done

@@ -1,7 +1,6 @@
 #! /usr/bin/env bash
 
 PPA="
-    ppa:apt-fast/stable
     ppa:linrunner/tlp
 "
 
@@ -57,9 +56,6 @@ done
 
 sudo apt update
 
-# Install apt-fast
-sudo apt install -y apt-fast
-
 # Remove useless packages
 sudo apt purge -y ubuntu-web-launchers thunderbird
 
@@ -68,10 +64,10 @@ sudo apt remove -y "fonts-kacst*" "fonts-khmeros*" fonts-lklug-sinhala fonts-gur
 sudo dpkg-reconfigure fontconfig
 
 # Check for updates
-sudo apt-fast full-upgrade -y
+sudo apt full-upgrade -y
 
 # Install packages
-sudo apt-fast install -y ${APT_PACKAGES[*]}
+sudo apt install -y ${APT_PACKAGES[*]}
 
 # Install programs
 for f in programs/ubuntu/*.sh; do

@@ -1,7 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=/opt/firefox-de/firefox:$HOME/.npm/bin:$PATH
-
+export PATH=$HOME/.npm/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kalak/.oh-my-zsh"
 
@@ -79,47 +78,6 @@ stty start undef
 stty stop undef
 setopt noflowcontrol
 
-# export MANPATH="/usr/local/man:$MANPATH"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-alias MAJ="sudo apt-fast update && sudo apt-fast upgrade -y"
-alias clear_apt="sudo apt autoclean && sudo apt clean && sudo apt autoremove -y"
-alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
-alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
-alias clear_history="echo -n '' > $HOME/.*_history"
-alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
-alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
-alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
-
-alias python="/usr/bin/python3"
-alias unifai="cd $HOME/Documents/projects/professional/unifai"
-alias personal="cd $HOME/Documents/projects/personal"
-
-# Common Mistakes
-alias ct='cat'
-alias im='vim'
-alias s='ls'
-alias gi='git'
-alias pip='pip3'
-
 # External softwares
 # ag
 agvim () {
@@ -144,3 +102,52 @@ setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
 setopt HIST_BEEP
 stty -ixon
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+if command -v pyenv 1>/dev/null 2>&1; then
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+fi
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+alias MAJ="sudo apt update && sudo apt upgrade -y"
+alias clear_apt="sudo apt autoclean && sudo apt clean && sudo apt autoremove -y"
+alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
+alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
+alias clear_history="echo -n '' > $HOME/.*_history"
+alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
+alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
+alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
+
+alias unifai="cd $HOME/Documents/projects/professional/unifai"
+alias personal="cd $HOME/Documents/projects/personal"
+
+# Common Mistakes
+alias ct='cat'
+alias im='vim'
+alias s='ls'
+alias gi='git'
+alias pip='pip3'

@@ -3,11 +3,15 @@
 # Choose pacman-mirrors
 sudo pacman-mirrors -f 0 && sudo pacman -Syy
 
+# Remove useless packages
+yes | sudo pacman -R hplip cups splix
+sudo systemctl disable avahi-daemon
+
 # Update
 yes | sudo pacman -Syu
 
 # Install base packages
-yes | sudo pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins pamac-cli vkc libreoffice firefox aria2 p7zip p7zip-plugins unrar tar rsync htop
+yes | sudo pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins pamac-cli vkc libreoffice firefox aria2 p7zip p7zip-plugins unrar tar rsync htop the_silver_searcher intel-ucode zsh linux-firmware vim
 
 # Install AUR packages
 yes | sudo pamac install ttf-ms-fonts ufw tlp

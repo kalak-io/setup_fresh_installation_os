@@ -6,7 +6,6 @@ obj/
 .obj_exists
 Project Logs */
 *.log
-.*
 *.zip
 a.out
 *.dSYM
@@ -20,4 +19,3 @@ __pycache__/
 myvenv
 *.sqlite3
 credentials.py
-data/

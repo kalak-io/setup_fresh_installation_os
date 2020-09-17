@@ -1,88 +1,36 @@
 #! /usr/bin/env bash
 
-PACKAGES=(
-    ubuntu-restricted-extras
-    curl
-    cmake
-    chromium-browser
-    silversearcher-ag
-    fzf
-    make
-    terminator
-    vlc
-    aria2
-    tree
-    bleachbit
-    vim
-    transmission-cli
-    transmission-gtk
-    htop
-    gparted
-    preload
-    zsh
-    tlp
-    tlp-rdw
-    gcc
-    build-essential
-    simple-scan
-    gnome-tweak-tool
-    exfat-fuse
-    exfat-utils
-    python3-pip
-    python3-venv
-    xclip
-    rar
-    unrar
-    p7zip-full
-    p7zip-rar
-    zram-config
-    adb
-    libreoffice-writer
-    libreoffice-calc
-    solaar-gnome3
-    intel-microcode
-    nodejs
-    npm
-)
+# Choose pacman-mirrors
+sudo pacman-mirrors -f 0 && sudo pacman -Syy
 
-# Remove useless asian languages
-sudo apt remove -y "fonts-kacst*" "fonts-khmeros*" fonts-lklug-sinhala fonts-guru-extra "fonts-nanum*" fonts-noto-cjk "fonts-takao*" fonts-tibetan-machine fonts-lao fonts-sil-padauk fonts-sil-abyssinica "fonts-tlwg-*" "fonts-lohit-*" fonts-beng-extra fonts-gargi fonts-gubbi fonts-gujr-extra fonts-kalapi "fonts-samyak*" fonts-navilu fonts-nakula fonts-orya-extra fonts-pagul fonts-sarai "fonts-telu*" "fonts-wqy*" "fonts-smc*" fonts-deva-extra fonts-sahadeva
-sudo dpkg-reconfigure fontconfig
+# Update
+yes | sudo pacman -Syu
 
-# Check for updates
-sudo apt-fast full-upgrade -y
+# Install base packages
+yes | sudo pacman -S a52dec faac faad2 flac jasper lame libdca libdv libmad libmpeg2 libtheora libvorbis libxv wavpack x264 xvidcore gstreamer0.10-plugins pamac-cli vkc libreoffice firefox aria2 p7zip p7zip-plugins unrar tar rsync htop
 
-# Install packages
-sudo apt-fast install -y ${APT_PACKAGES[*]}
+# Install AUR packages
+yes | sudo pamac install ttf-ms-fonts ufw tlp
 
 # Install programs
-for f in programs/ubuntu/*.sh; do
+for f in programs/arch/*.sh; do
     bash "$f" -H;
 done
 
-# Activate firewall
-sudo ufw enable
+# Configure ZRAM
 
-# Activate tlp
-sudo systemctl enable tlp
-
-# Configure swapiness
-sudo sysctl -w vm.swappiness=10
+# Set swapiness
+sudo echo vm.swappiness=10 > /etc/sysctl.d/100-manjaro.conf
 sudo swapoff -a
 sudo swapon -a
 
-# Activate zram
-sudo service zram-config --full-restart
+# Enable Firewall
+sudo systemctl enable ufw.service
+sudo ufw enable
 
-# configure Gnome
-echo "Configuring Gnome shell"
-gsettings set org.gnome.shell.extensions.dash-to-dock click-action 'minimize'
-gsettings set org.gnome.desktop.interface show-battery-percentage true
-gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-dark'
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position BOTTOM
-gsettings set org.gnome.shell favorite-apps ['org.gnome.Nautilus.desktop', 'chromium_chromium.desktop', 'firefox.desktop', 'firefoxDeveloperEdition.desktop', 'slack.desktop', 'spotify.desktop']
+# Enable TRIM
+sudo systemctl enable fstrim.timer
 
-# Clean Up system
-sudo apt autoclean
-sudo apt clean
-sudo apt autoremove -y
+# Enable TLP
+sudo systemctl enable tlp --now
+

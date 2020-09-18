@@ -20,7 +20,7 @@ echo "Create projects directory"
 mkdir -p $HOME/Documents/projects/personal && cd $_
 git clone https://github.com/kalak-io/setup_fresh_installation_os.git
 cd $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts
-sudo chmod u+x ./*.sh ./programs/*.sh
+sudo chmod -R u+x ./*.sh ./**/*.sh
 
 # Install specific packages
 if [ $DISTRO == "Ubuntu" ]
@@ -43,6 +43,18 @@ fi
 for f in ./programs/common/*.sh; do
     bash "$f" -H;
 done
+
+if [ $GDMSESSION == 'xfce ']
+then
+    echo "Configuring XFCE"
+    ./de/xfce.sh
+elif [ $GDMSESSION == 'gnome-shell' ]
+then
+    echo "Configuring GNOME SHELL"
+    ./de/gnome-shell.sh
+else
+    echo "Unsupported distro";
+fi
 
 ./symlink.sh
 ./repositories.sh

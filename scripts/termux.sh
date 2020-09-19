@@ -5,6 +5,7 @@ PACKAGES=(
     vim
     zsh
     aria2
+    openssh
 )
 
 # Update packages

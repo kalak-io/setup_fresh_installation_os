@@ -9,7 +9,7 @@ then
 elif [ $DISTRO == "ManjaroLinux" ] || [ $DISTRO == "Arch" ]
 then
     echo "Arch base";
-    sudo pacman -Syy && sudo pacman -S --noconfirm git
+    sudo pacman -Syy && sudo pacman -S --noconfirm --needed git
 else
     echo "Unsupported distro";
     exit 2
@@ -58,5 +58,6 @@ fi
 
 ./symlink.sh
 ./repositories.sh
+./scale_spotify.sh
 
 echo "Finish ! You can reboot the system."

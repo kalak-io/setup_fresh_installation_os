@@ -58,8 +58,8 @@ sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syy --noconfirm
 
 # Configure pacman with aria2
 echo "Configuring Pacman with aria2"
-sudo pacman -S --noconfirm aria2
-sudo echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u" >> /etc/pacman.conf
+sudo pacman -S --noconfirm --needed aria2
+echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u" | sudo tee -a /etc/pacman.conf
 
 # Remove useless packages
 echo "Removing useless packages"
@@ -92,11 +92,12 @@ sudo echo -e "zswap_enabled=1\nzram_enabled=0\nswapfc_enabled=1" > /etc/systemd/
 # Configure Docker
 echo "Configuring Docker"
 sudo usermod -aG docker $LOGNAME
-sudo docker run hello-world
+sudo systemctl enable docker
+docker run hello-world
 
 # Set swapiness
 echo "Configurong Swapiness"
-sudo echo vm.swappiness=10 > /etc/sysctl.d/100-manjaro.conf
+echo vm.swappiness=10 | sudo tee -a /etc/sysctl.d/100-manjaro.conf
 sudo swapoff -a
 sudo swapon -a
 

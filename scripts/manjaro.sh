@@ -71,7 +71,7 @@ sudo pacman -Syu --noconfirm
 
 # Install base packages
 echo "Installing packages"
-sudo pacman -S --noconfirm ${PACKAGES[*]}
+sudo pacman -S --noconfirm --needed ${PACKAGES[*]}
 
 # Install AUR packages
 echo "Installing AUR packages"

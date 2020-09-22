@@ -58,5 +58,6 @@ fi
 
 ./symlink.sh
 ./repositories.sh
+./scale_spotify.sh
 
 echo "Finish ! You can reboot the system."

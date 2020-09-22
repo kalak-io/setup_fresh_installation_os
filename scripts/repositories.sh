@@ -23,6 +23,8 @@ SSH_KEY=$HOME/.ssh/id_rsa
 if [ ! -f "$SSH_KEY" ]; then
     echo "Generating ssh key"
     ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null -b 4096 -C "clement@unifai.fr"
+    ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
     eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
     xclip -sel clip < $HOME/.ssh/id_rsa.pub
     echo "Contents of the id_rsa.pub copied!"

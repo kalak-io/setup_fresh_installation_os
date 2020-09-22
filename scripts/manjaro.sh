@@ -92,11 +92,12 @@ sudo echo -e "zswap_enabled=1\nzram_enabled=0\nswapfc_enabled=1" > /etc/systemd/
 # Configure Docker
 echo "Configuring Docker"
 sudo usermod -aG docker $LOGNAME
-sudo docker run hello-world
+sudo systemctl enable docker
+docker run hello-world
 
 # Set swapiness
 echo "Configurong Swapiness"
-sudo echo vm.swappiness=10 > /etc/sysctl.d/100-manjaro.conf
+echo vm.swappiness=10 | sudo tee -a /etc/sysctl.d/100-manjaro.conf
 sudo swapoff -a
 sudo swapon -a
 

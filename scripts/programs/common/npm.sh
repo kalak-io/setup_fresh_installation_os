@@ -1,6 +1,7 @@
 #! /usr/bin/env bash
 
 echo "Installing Node & npm"
+mkdir -p $HOME/.npm
 npm config set prefix $HOME/.npm  
 sudo chown -R $USER $HOME/.npm
 

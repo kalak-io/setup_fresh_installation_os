@@ -50,6 +50,7 @@ PACKAGES=(
     tlp
     ufw
     preload
+    plank
 )
 
 # Choose pacman-mirrors

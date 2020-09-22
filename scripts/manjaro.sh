@@ -64,7 +64,7 @@ echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --fil
 
 # Remove useless packages
 echo "Removing useless packages"
-sudo pacman -R midori
+sudo pacman -R midori manjaro-hello
 sudo systemctl disable avahi-daemon
 
 # Update

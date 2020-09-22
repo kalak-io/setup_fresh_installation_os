@@ -59,7 +59,7 @@ sudo pacman-mirrors --fasttrack 5 && sudo pacman -Syy --noconfirm
 # Configure pacman with aria2
 echo "Configuring Pacman with aria2"
 sudo pacman -S --noconfirm --needed aria2
-sudo echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u" >> /etc/pacman.conf
+echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u" | sudo tee -a /etc/pacman.conf
 
 # Remove useless packages
 echo "Removing useless packages"

@@ -75,7 +75,7 @@ sudo pacman -S --noconfirm ${PACKAGES[*]}
 
 # Install AUR packages
 echo "Installing AUR packages"
-sudo pamac build --no-confirm spotify
+pamac build --no-confirm spotify
 
 # Install programs
 echo "Installing programs"

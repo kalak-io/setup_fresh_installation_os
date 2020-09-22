@@ -12,23 +12,18 @@ PACKAGES=(
     libdca
     libdv
     libmad
-    libmpegu
-    libtheoru
-    libvorbiu
     libxv
     wavpack
     x264
     xvidcore
-    gstreamer0.10-plugins
     pamac-cli
     vlc
-    libreoffice
+    libreoffice-still
     terminator
     firefox
     firefox-developer-edition
     chromium
     p7zip
-    p7zip-plugins
     unrar
     tar
     rsync
@@ -68,7 +63,6 @@ sudo echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true 
 
 # Remove useless packages
 echo "Removing useless packages"
-sudo pacman -R --noconfirm hplip cups splix
 sudo systemctl disable avahi-daemon
 
 # Update
@@ -84,7 +78,7 @@ echo "Installing AUR packages"
 sudo pamac build --no-confirm spotify
 
 # Install programs
-echo "Installong programs"
+echo "Installing programs"
 for f in programs/arch/*.sh; do
     bash "$f" -H;
 done

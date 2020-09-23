@@ -8,7 +8,7 @@ PERSONAL="
 
 UNIFAI="
     git@gitlab.com:unifai/free-trial.git
-    git@gitlab.com:unifai/indiana.git
+    --recursive git@gitlab.com:unifai/indiana.git
     git@gitlab.com:unifai/indiana-api.git
     git@gitlab.com:unifai/intersport.git
     git@gitlab.com:unifai/the-agent.git

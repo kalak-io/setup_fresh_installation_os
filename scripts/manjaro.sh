@@ -51,6 +51,7 @@ PACKAGES=(
     ufw
     preload
     plank
+    xorg-xrandr
 )
 
 # Choose pacman-mirrors

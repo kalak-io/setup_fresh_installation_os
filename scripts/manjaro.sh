@@ -52,6 +52,7 @@ PACKAGES=(
     preload
     plank
     xorg-xrandr
+    httpie
 )
 
 # Choose pacman-mirrors

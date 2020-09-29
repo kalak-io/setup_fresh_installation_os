@@ -133,7 +133,7 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias MAJ="sudo apt update && sudo apt upgrade -y"
+alias MAJ="pamac upgrade -a"
 alias clear_apt="sudo apt autoclean && sudo apt clean && sudo apt autoremove -y"
 alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
 alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
@@ -142,8 +142,13 @@ alias extract="python $HOME/Documents/projects/personal/archives_extractor/archi
 alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
 alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
 
-alias unifai="cd $HOME/Documents/projects/professional/unifai"
 alias personal="cd $HOME/Documents/projects/personal"
+alias unifai="cd $HOME/Documents/projects/professional/unifai"
+alias intersport="unifai && cd intersport"
+alias click-and-care="unifai && cd click-and-care"
+alias the-agent="unifai && cd the-agent"
+
+alias wikit="wikit -b --lang fr"
 
 # Common Mistakes
 alias ct='cat'

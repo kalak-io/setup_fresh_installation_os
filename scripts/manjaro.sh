@@ -53,6 +53,7 @@ PACKAGES=(
     plank
     xorg-xrandr
     httpie
+    redshift
 )
 
 # Choose pacman-mirrors

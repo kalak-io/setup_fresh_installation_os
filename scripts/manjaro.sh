@@ -52,6 +52,7 @@ PACKAGES=(
     preload
     plank
     xorg-xrandr
+    clamav
 )
 
 # Choose pacman-mirrors
@@ -78,13 +79,16 @@ sudo pacman -S --noconfirm --needed ${PACKAGES[*]}
 
 # Install AUR packages
 echo "Installing AUR packages"
-pamac build --no-confirm spotify
+pamac build --no-confirm spotify ttf-ms-fonts
 
 # Install programs
 echo "Installing programs"
 for f in programs/arch/*.sh; do
     bash "$f" -H;
 done
+
+# Configure environnent
+echo QT_STYLE_OVERRIDE=gtk+ | sudo tee -a /etc/environment
 
 # Configure ZRAM
 echo "Configurong ZRAM"
@@ -100,7 +104,10 @@ docker run hello-world
 
 # Set swapiness
 echo "Configurong Swapiness"
-echo vm.swappiness=10 | sudo tee -a /etc/sysctl.d/100-manjaro.conf
+sudo rm /etc/sysctl.d/100-manjaro.conf
+sudo rm /etc/sysctl.d/99-swappiness.conf
+echo vm.swappiness=5 | sudo tee -a /etc/sysctl.d/99-sysctl.conf
+echo vm.vfs_cache_pressure=50 | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 sudo swapoff -a
 sudo swapon -a
 
@@ -110,8 +117,8 @@ sudo systemctl enable preload
 
 # Enable Firewall
 echo "Configuring UFW"
-sudo systemctl enable ufw.service
 sudo ufw enable
+sudo systemctl enable ufw
 
 # Enable TRIM
 echo "Configuring TRIM"
@@ -119,5 +126,16 @@ sudo systemctl enable fstrim.timer
 
 # Enable TLP
 echo "Configuring TLP"
+sudo tlp start
 sudo systemctl enable tlp --now
+sudo systemctl enable tlp-sleep
+
+# Enable Clamav
+echo "Configuring Clamav"
+sudo systemctl enable clamd.service
+sudo systemctl start clamd.service
+sudo freshclam
+sudo systemctl enable freshclamd.service
+sudo systemctl start freshclamd.service
+
 

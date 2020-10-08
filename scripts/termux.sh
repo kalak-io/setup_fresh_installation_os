@@ -6,6 +6,7 @@ PACKAGES=(
     zsh
     aria2
     openssh
+    fzf
 )
 
 # Update packages

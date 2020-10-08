@@ -105,7 +105,7 @@ sudo systemctl enable docker
 docker run hello-world
 
 # Set swapiness
-echo "Configurong Swapiness"
+echo "Configuring Swapiness"
 sudo rm /etc/sysctl.d/100-manjaro.conf
 sudo rm /etc/sysctl.d/99-swappiness.conf
 echo vm.swappiness=5 | sudo tee -a /etc/sysctl.d/99-sysctl.conf
@@ -130,14 +130,9 @@ sudo systemctl enable fstrim.timer
 echo "Configuring TLP"
 sudo tlp start
 sudo systemctl enable tlp --now
-sudo systemctl enable tlp-sleep
 
 # Enable Clamav
 echo "Configuring Clamav"
-sudo systemctl enable clamd.service
-sudo systemctl start clamd.service
+sudo systemctl enable clamav-daemon.service
+sudo systemctl start clamav-daemon.service
 sudo freshclam
-sudo systemctl enable freshclamd.service
-sudo systemctl start freshclamd.service
-
-

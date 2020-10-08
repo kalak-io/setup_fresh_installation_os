@@ -271,10 +271,10 @@ function! CreateShortcut(keys, cmd, where, ...)
 endfunction
 
 " Ctrl A - Begin Line
-call CreateShortcut("C-a", "0", "inv")
+call CreateShortcut("C-a", "0i", "inv")
 
 " Ctrl E - End Line
-call CreateShortcut("C-e", "$l", "inv")
+call CreateShortcut("C-e", "$li", "inv")
 
 " Home - Go To Begin
 call CreateShortcut("Home", "gg", "inv")

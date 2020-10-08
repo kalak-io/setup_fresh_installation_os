@@ -47,6 +47,7 @@ APT_PACKAGES=(
     intel-microcode
     nodejs
     npm
+    httpie
 )
 
 # Add tierce repository

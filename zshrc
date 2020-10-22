@@ -147,6 +147,7 @@ alias unifai="cd $HOME/Documents/projects/professional/unifai"
 alias intersport="unifai && cd intersport"
 alias click-and-care="unifai && cd click-and-care"
 alias the-agent="unifai && cd the-agent"
+alias self-service="unifai && cd self-service"
 
 alias wikit="wikit -b --lang fr"
 

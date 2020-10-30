@@ -42,7 +42,7 @@ DISABLE_UPDATE_PROMPT="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -151,9 +151,14 @@ alias self-service="unifai && cd self-service"
 
 alias wikit="wikit -b --lang fr"
 
+alias -s vue=vim
+
 # Common Mistakes
 alias ct='cat'
 alias im='vim'
 alias s='ls'
 alias gi='git'
 alias pip='pip3'
+
+# Functions
+alias replace='f() { ag -0 -l $1 | xargs -0 sed -i "s/$1/$2/g" };f'

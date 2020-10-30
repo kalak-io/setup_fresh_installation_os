@@ -147,6 +147,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'vue': ['prettier', 'eslint']}
 let g:ale_fix_on_save = 1
 
+autocmd BufRead,BufNewFile *.vue setfiletype html
 "" Emmet
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,vue EmmetInstall

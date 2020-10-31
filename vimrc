@@ -17,22 +17,21 @@ Plugin 'VundleVim/Vundle.vim'
 
 " List of plugins
 Plugin 'lifepillar/vim-solarized8'
+Plugin 'raimondi/delimitmate'
 Plugin 'dense-analysis/ale'
 Plugin 'sheerun/vim-polyglot'
-Plugin 'posva/vim-vue'
-Plugin 'mattn/emmet-vim'
 Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'valloric/youcompleteme'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'mg979/vim-visual-multi'
 Plugin 'bling/vim-airline'
-Plugin 'alvan/vim-closetag'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'raimondi/delimitmate'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
+Plugin 'ap/vim-css-color'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -152,10 +151,6 @@ let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'vue': ['prettier', 'e
 let g:ale_fix_on_save = 1
 
 autocmd BufRead,BufNewFile *.vue setfiletype html
-"" Emmet
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,vue EmmetInstall
-let g:user_emmet_leader_key=','
 
 "" NERDTree
 " Show hidden files
@@ -189,36 +184,6 @@ let g:VM_maps = {}
 let g:VM_maps['Find Under']         = '<C-d>'
 let g:VM_maps['Find Subword Under'] = '<C-d>'
 
-"" CloseTag
-" filenames like *.xml, *.html, *.xhtml, ...
-" These are the file extensions where this plugin is enabled.
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue'
-" filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
-" filetypes like xml, html, xhtml, ...
-" These are the file types where this plugin is enabled.
-let g:closetag_filetypes = 'html,xhtml,phtml'
-" filetypes like xml, xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-let g:closetag_xhtml_filetypes = 'xhtml,jsx'
-" integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
-let g:closetag_emptyTags_caseSensitive = 1
-" dict
-" Disables auto-close if not in a "valid" region (based on filetype)
-let g:closetag_regions = {
-      \ 'typescript.tsx': 'jsxRegion,tsxRegion',
-      \ 'javascript.jsx': 'jsxRegion',
-      \ }
-" Shortcut for closing tags, default is '>'
-let g:closetag_shortcut = '>'
-" Add > at current position without closing the current tag, default is ''
-let g:closetag_close_shortcut = ''
-
-"" Tagalong
-let g:tagalong_additional_filetypes = ['vue']
-
 "" UltiSnips
 let g:ulti_expand_or_jump_res = 0
 function ExpandSnippetOrCarriageReturn()
@@ -234,7 +199,7 @@ inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" 
 let g:UltiSnipsEditSplit="vertical"
 
 "" Ack
-"Use ag
+" Use ag
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
@@ -294,6 +259,9 @@ call CreateShortcut("C-f", "/", "in", "noTrailingIInInsert")
 
 " Ctrl H - Search and Replace
 call CreateShortcut("C-h", ":%s/", "in", "noTrailingIInInsert")
+
+"Ctrl K - Search in files with ag
+call CreateShortcut("C-k", ":Ack! ", "in", "noTrailingIInInsert")
 
 " Ctrl N - Open/Close NerdTree
 call CreateShortcut("C-n", ":NERDTreeToggle<CR>", "inv")

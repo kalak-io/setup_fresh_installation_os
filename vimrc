@@ -104,6 +104,9 @@ set timeoutlen=1000
 au InsertEnter * set timeout
 au InsertLeave * set notimeout
 
+"" Persistant undo
+set undodir=~/.vim/tmp_dirs/undodir
+set undofile
 
 "*****************************************************************************
 "" Visual Settings
@@ -165,7 +168,6 @@ autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | exe 'cd '.argv()[0] | endif
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 
 "" CtrlP
 " Define working path
@@ -241,16 +243,6 @@ endif
 "*****************************************************************************
 imap cll console.log()<Esc>==f(a
 
-" Save with Ctrl + s in Normal and Insert modes
-nnoremap <c-s> :w<CR>
-inoremap <c-s> <Esc>:w<CR>a
-vnoremap <c-s> <Esc>:w<CR>
-
-" Usefull shortcuts to enter insert mode
-nnoremap <CR> i<CR>
-nnoremap <Backspace> i<Backspace>
-nnoremap <Space> i<Space>
-
 function! CreateShortcut(keys, cmd, where, ...)
   let keys = "<" . a:keys . ">"
   if a:where =~ "i"
@@ -274,6 +266,11 @@ endfunction
 "*****************************************************************************
 "" Shortcuts
 "*****************************************************************************
+
+" Usefull shortcuts to enter insert mode
+nnoremap <CR> i<CR>
+nnoremap <Backspace> i<Backspace>
+nnoremap <Space> i<Space>
 
 " Home - Go To Begin
 call CreateShortcut("Home", "gg", "inv")
@@ -303,6 +300,11 @@ call CreateShortcut("C-n", ":NERDTreeToggle<CR>", "inv")
 
 " Ctrl R - Redo
 call CreateShortcut("C-r", "<C-r>", "in")
+
+" Ctrl S - Save
+nnoremap <c-s> :w<CR>
+inoremap <c-s> <Esc>:w<CR>a
+vnoremap <c-s> <Esc>:w<CR>
 
 " Ctrl T - New tab
 call CreateShortcut("C-t", ":tabnew<CR>i", "inv", "noTrailingIInInsert", "cmdInVisual")

@@ -161,4 +161,4 @@ alias gi='git'
 alias pip='pip3'
 
 # Functions
-alias replace='f() { ag -0 -l $1 | xargs -0 sed -i "s/$1/$2/g" };f'
+alias replace='f() { ag -0 -l $1 | xargs -0 sed -i "s%$1%$2%g" };f'

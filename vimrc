@@ -113,6 +113,7 @@ set title
 set titleold="Terminal"
 syntax on
 set ruler
+set showcmd
 set number
 set linebreak
 set tw=500
@@ -165,7 +166,6 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 " Close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-map <C-n> :NERDTreeToggle<CR>
 
 "" CtrlP
 " Define working path
@@ -271,17 +271,9 @@ function! CreateShortcut(keys, cmd, where, ...)
   endif
 endfunction
 
-" Ctrl A - Begin Line
-call CreateShortcut("C-a", "0", "i")
-
-" Ctrl A - Begin Line
-call CreateShortcut("C-a", "0i", "nv")
-
-" Ctrl E - End Line
-call CreateShortcut("C-e", "$l", "i")
-
-" Ctrl E - End Line
-call CreateShortcut("C-e", "$li", "nv")
+"*****************************************************************************
+"" Shortcuts
+"*****************************************************************************
 
 " Home - Go To Begin
 call CreateShortcut("Home", "gg", "inv")
@@ -289,11 +281,34 @@ call CreateShortcut("Home", "gg", "inv")
 " End - Go To End
 call CreateShortcut("End", "G", "inv")
 
+" Ctrl A - Begin Line
+call CreateShortcut("C-a", "0", "i")
+call CreateShortcut("C-a", "0i", "nv")
+
+" Ctrl C - Quit
+call CreateShortcut("C-c", ":qa!<CR>", "inv", "cmdInVisual")
+
+" Ctrl E - End Line
+call CreateShortcut("C-e", "$l", "i")
+call CreateShortcut("C-e", "$li", "nv")
+
 " Ctrl F - Find
 call CreateShortcut("C-f", "/", "in", "noTrailingIInInsert")
 
 " Ctrl H - Search and Replace
 call CreateShortcut("C-h", ":%s/", "in", "noTrailingIInInsert")
+
+" Ctrl N - Open/Close NerdTree
+call CreateShortcut("C-n", ":NERDTreeToggle<CR>", "inv")
+
+" Ctrl R - Redo
+call CreateShortcut("C-r", "<C-r>", "in")
+
+" Ctrl T - New tab
+call CreateShortcut("C-t", ":tabnew<CR>i", "inv", "noTrailingIInInsert", "cmdInVisual")
+
+" Ctrl Z - Undo
+call CreateShortcut("C-z", "u", "in")
 
 " Pageup - Move up Line
 call CreateShortcut("PageUp", ":m-2<CR>", "inv", "restoreSelectionAfter")
@@ -301,18 +316,6 @@ call CreateShortcut("PageUp", ":m-2<CR>", "inv", "restoreSelectionAfter")
 " Pagedown - Move down Line
 call CreateShortcut("PageDown", ":m+<CR>", "in")
 call CreateShortcut("PageDown", ":m'>+<CR>", "v", "restoreSelectionAfter")
-
-" Ctrl C - Quit
-call CreateShortcut("C-c", ":qa!<CR>", "inv", "cmdInVisual")
-
-" Ctrl Z - Undo
-call CreateShortcut("C-z", "u", "in")
-
-" Ctrl R - Redo
-call CreateShortcut("C-r", "<C-r>", "in")
-
-" Ctrl T - New tab
-call CreateShortcut("C-t", ":tabnew<CR>i", "inv", "noTrailingIInInsert", "cmdInVisual")
 
 " Alt Right - Next tab
 call CreateShortcut("C-Right", "gt", "inv")

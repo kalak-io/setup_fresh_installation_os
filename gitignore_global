@@ -19,3 +19,4 @@ __pycache__/
 myvenv
 *.sqlite3
 credentials.py
+node_modules/

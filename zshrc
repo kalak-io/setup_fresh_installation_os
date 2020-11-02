@@ -146,10 +146,10 @@ alias replace='f() { ag -0 -l $1 | xargs -0 sed -i "s%$1%$2%g" };f'
 
 alias personal="cd $HOME/Documents/projects/personal"
 alias unifai="cd $HOME/Documents/projects/professional/unifai"
-alias intersport="unifai && cd intersport"
-alias click-and-care="unifai && cd click-and-care"
-alias the-agent="unifai && cd the-agent"
-alias self-service="unifai && cd self-service"
+alias intersport="unifai && cd intersport && cd frontend"
+alias click-and-care="unifai && cd click-and-care && cd frontend"
+alias the-agent="unifai && cd the-agent && cd frontend"
+alias self-service="unifai && cd self-service && cd frontend"
 
 alias wikit="wikit -b --lang fr"
 

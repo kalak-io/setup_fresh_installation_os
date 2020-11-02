@@ -32,6 +32,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mileszs/ack.vim'
 Plugin 'ap/vim-css-color'
+Plugin 'ryanoasis/vim-devicons'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,9 +42,9 @@ filetype plugin indent on    " required
 "" Basic Setup
 "*****************************************************************************"
 "" Encoding
-set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
+set encoding=UTF-8
+set fileencoding=UTF-8
+set fileencodings=UTF-8
 
 "" Fix backspace indent
 set backspace=indent,eol,start
@@ -124,6 +125,9 @@ set virtualedit=onemore " Allow the cursor to move just past the end of the line
 set noshowmode " Don't display the current mode
 set iskeyword+=\- " Complete words containing a dash
 
+"" Fonts
+set guifont=DroidSansMono\ Nerd\ Font\ 11
+
 " Highligt the cursor line
 set cursorline
 let &showbreak="\u21aa " " Show a left arrow when wrapping text
@@ -146,6 +150,9 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 "*****************************************************************************
 "" Plugins Configuration
 "*****************************************************************************
+"" Airline
+let g:airline_powerline_fonts = 1
+
 "" ALE
 let g:ale_fixers = {'javascript': ['prettier', 'eslint'], 'vue': ['prettier', 'eslint']}
 let g:ale_fix_on_save = 1

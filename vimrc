@@ -254,8 +254,8 @@ call CreateShortcut("End", "G", "inv")
 call CreateShortcut("C-a", "0", "i")
 call CreateShortcut("C-a", "0i", "nv")
 
-" Ctrl C - Quit
-call CreateShortcut("C-c", ":qa!<CR>", "inv", "cmdInVisual")
+"Ctrl C - Close current tab
+call CreateShortcut("C-c", ":tabclose<CR>", "inv")
 
 " Ctrl E - End Line
 call CreateShortcut("C-e", "$l", "i")
@@ -272,6 +272,9 @@ call CreateShortcut("C-k", ":Ack! ", "in", "noTrailingIInInsert")
 
 " Ctrl N - Open/Close NerdTree
 call CreateShortcut("C-n", ":NERDTreeToggle<CR>", "inv")
+
+" Ctrl Q - Quit
+call CreateShortcut("C-q", ":qa!<CR>", "inv", "cmdInVisual")
 
 " Ctrl R - Redo
 call CreateShortcut("C-r", "<C-r>", "in")

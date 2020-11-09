@@ -22,6 +22,7 @@ Plugin 'dense-analysis/ale'
 Plugin 'sheerun/vim-polyglot'
 Plugin 'preservim/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'valloric/youcompleteme'
 Plugin 'ctrlpvim/ctrlp.vim'
@@ -269,6 +270,9 @@ call CreateShortcut("C-h", ":%s/", "in", "noTrailingIInInsert")
 
 "Ctrl K - Search in files with ag
 call CreateShortcut("C-k", ":Ack! ", "in", "noTrailingIInInsert")
+
+" Ctrl L - Delete all lines
+call CreateShortcut("C-l", "ggdG", "in")
 
 " Ctrl N - Open/Close NerdTree
 call CreateShortcut("C-n", ":NERDTreeToggle<CR>", "inv")

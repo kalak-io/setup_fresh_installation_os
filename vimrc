@@ -115,7 +115,7 @@ set undofile
 " UI
 set title
 set titleold="Terminal"
-syntax on
+syntax enable
 set ruler
 set showcmd
 set number
@@ -134,8 +134,13 @@ set cursorline
 let &showbreak="\u21aa " " Show a left arrow when wrapping text
 
 " Theme
-set background=dark
+if has('gui_running')
+    set background=light
+else
+    set background=dark
+endif
 colorscheme solarized8
+let g:solarized_termcolors=256
 
 " Scroll
 set scrolloff=10 " Always keep 10 lines after or before when scrolling

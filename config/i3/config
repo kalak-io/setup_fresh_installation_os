@@ -55,23 +55,11 @@ bindsym $mod+Shift+q kill
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show
 
-# change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
-
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -107,16 +95,16 @@ bindsym $mod+a focus parent
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $ws1 "1"
-set $ws2 "2"
-set $ws3 "3"
-set $ws4 "4"
-set $ws5 "5"
-set $ws6 "6"
-set $ws7 "7"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+set $ws1 "1. Browser"
+set $ws2 "2. Work"
+set $ws3 "3. Editor/Console"
+set $ws4 "4. Editor/Console"
+set $ws5 "5. Misc"
+set $ws6 "6. Misc"
+set $ws7 "7. Misc"
+set $ws8 "8. Misc"
+set $ws9 "9. Music"
+set $ws10 "10. Chat"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -179,7 +167,9 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command exec $HOME/.config/i3status/barista
+        position top
+        font pango:DejaVu Sans Mono 10
 }
 
 ### Customization ###
@@ -189,3 +179,19 @@ bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 # decrease screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
+## Media player controls
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+bindsym XF86AudioPrev exec playerctl previous
+
+## Autostart
+exec --no-startup-id redshift
+# Background
+exec --no-startup-id feh --bg-fill $HOME/Pictures/hua-niao_Samantha-Everton.jpg
+# Lock screen
+bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh
+
+## Assignation
+assign [class="^Firefox$"] $ws1
+for_window [class="^Spotify$"] move to workspace $ws9
+assign [class="^Slack$"] $ws10

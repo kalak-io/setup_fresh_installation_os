@@ -54,7 +54,13 @@ PACKAGES=(
     xorg-xrandr
     clamav
     httpie
+    balena-etcher
     redshift
+    rofi
+    feh
+    playerctl
+    scrot
+    dunst
 )
 
 # Choose pacman-mirrors

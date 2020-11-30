@@ -192,6 +192,6 @@ exec --no-startup-id feh --bg-fill $HOME/Pictures/hua-niao_Samantha-Everton.jpg
 bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh
 
 ## Assignation
-assign [class="^Firefox$"] $ws1
+assign [class="^firefox$"] $ws1
 for_window [class="^Spotify$"] move to workspace $ws9
 assign [class="^Slack$"] $ws10

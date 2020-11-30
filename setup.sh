@@ -52,6 +52,10 @@ elif [ $GDMSESSION == 'gnome-shell' ]
 then
     echo "Configuring GNOME SHELL"
     ./de/gnome-shell.sh
+elif [ $GDMSESSION == 'i3' ]
+then
+    echo "Configuring i3"
+    ./de/i3.sh
 else
     echo "Unsupported distro";
 fi

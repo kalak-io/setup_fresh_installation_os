@@ -186,6 +186,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 ## Autostart
 exec --no-startup-id redshift
+exec --no-startup-id slack
+exec --no-startup-id spotify --force-device-scale-factor=1.5
 # Background
 exec --no-startup-id feh --bg-fill $HOME/Pictures/hua-niao_Samantha-Everton.jpg
 # Lock screen

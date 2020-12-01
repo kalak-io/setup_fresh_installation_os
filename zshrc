@@ -154,6 +154,7 @@ alias self-service="unifai && cd self-service && cd frontend"
 alias wikit="wikit -b --lang fr"
 
 alias -s vue=vim
+alias -s js=vim
 
 # Common Mistakes
 alias ct='cat'
@@ -161,3 +162,6 @@ alias im='vim'
 alias s='ls'
 alias gi='git'
 alias pip='pip3'
+
+# Fix scaling Spotify
+alias spotify="spotify --force-device-scale-factor=1.5"

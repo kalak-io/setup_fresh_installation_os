@@ -194,5 +194,6 @@ bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_o
 ## Assignation
 assign [class="^firefox$"] $ws1
 assign [class="^Chromium$"] $ws2
+assign [class="^Terminator$"] $ws3
 for_window [class="^Spotify$"] move to workspace $ws9
 assign [class="^Slack$"] $ws10

@@ -61,6 +61,7 @@ PACKAGES=(
     playerctl
     scrot
     dunst
+    ttf-ubuntu-font-family
 )
 
 # Choose pacman-mirrors

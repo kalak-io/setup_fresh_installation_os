@@ -9,6 +9,9 @@
 general {
         colors = true
         interval = 5
+        color_good = "#FCFFFD"
+        color_bad = "#960200"
+        color_degraded = "#FFD046"
 }
 
 # order += "ipv6"
@@ -20,6 +23,7 @@ general {
 # order += "memory"
 order += "tztime local"
 order += "volume master"
+order += "battery 0"
 
 wireless _first_ {
         format_up = "W: (%quality at %essid) %ip"
@@ -33,6 +37,18 @@ ethernet _first_ {
 
 battery all {
         format = "%status %percentage %remaining"
+}
+
+battery 0 {
+        format = "%status %percentage"
+        integer_battery_capacity = true
+        format_down = ""
+        status_chr = ""
+        status_bat = ""
+        status_unk = ""
+        status_full = ""
+        path = "/sys/class/power_supply/BAT%d/uevent"
+        low_threshold = 10
 }
 
 disk "/" {
@@ -50,13 +66,13 @@ memory {
 }
 
 tztime local {
-        format = "%Y-%m-%d %H:%M:%S"
+        format = "%Y-%m-%d - %H:%M"
         align = "center"
 }
 
 volume master {
-        format = "♪: %volume"
-        format_muted = "♪: muted (%volume)"
+        format = " %volume"
+        format_muted = " %volume"
         device = "default"
         mixer = "Master"
         mixer_idx = 0

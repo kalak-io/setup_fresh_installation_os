@@ -13,11 +13,11 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+# font pango:monospace 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango:UbuntuMono-regular 8
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -88,10 +88,10 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -103,8 +103,8 @@ set $ws5 "5. Misc"
 set $ws6 "6. Misc"
 set $ws7 "7. Misc"
 set $ws8 "8. Misc"
-set $ws9 "9. Music"
-set $ws10 "10. Chat"
+set $ws9 "9. Spotify"
+set $ws10 "10. Slack"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -167,27 +167,50 @@ bindsym $mod+r mode "resize"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command exec $HOME/.config/i3status/barista
+        status_command i3status
         position top
-        font pango:DejaVu Sans Mono 10
-}
+        font pango:UbuntuMono 12
+        separator_symbol "⁞"
+        colors {
+          background #000000
+          statusline #FCFFFD
+          separator  #FFD046
+
+          focused_workspace  #000000 #000000 #FFD046
+          active_workspace   #000000 #000000 #EADAA2
+          inactive_workspace #000000 #000000 #FCFFFD
+          urgent_workspace   #000000 #000000 #960200
+          binding_mode       #000000 #000000 #CE6C47
+        }
+    }
 
 ### Customization ###
+## Suspend system
+bindsym $mod+Shift+s exec systemctl suspend
 ## Backlight
 # increase screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 # decrease screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
+
+## 
+# bindsym $mod+p exec pavucontrol 
 ## Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+## Set startup volume
+exec_always pactl set-sink-volume 0 '20%'
+## Disable beeps
+exec_always xset -b
 
 ## Autostart
 exec --no-startup-id redshift
 exec --no-startup-id slack
 exec --no-startup-id spotify --force-device-scale-factor=1.5
+## OSD
+exec --no-startup-id dunst
 # Background
 exec --no-startup-id feh --bg-fill $HOME/Pictures/hua-niao_Samantha-Everton.jpg
 # Lock screen
@@ -196,6 +219,9 @@ bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_o
 ## Assignation
 assign [class="^firefox$"] $ws1
 assign [class="^Chromium$"] $ws2
-assign [class="^Terminator$"] $ws3
-for_window [class="^Spotify$"] move to workspace $ws9
+# assign [class="^Terminator$"] $ws3
+for_window [class="^Spotify$"] move --no-auto-back-and-forth to workspace $ws9
 assign [class="^Slack$"] $ws10
+
+## Disable border for all windows
+for_window [class="^.*"] border none

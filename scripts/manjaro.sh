@@ -88,7 +88,7 @@ sudo pacman -S --noconfirm --needed ${PACKAGES[*]}
 
 # Install AUR packages
 echo "Installing AUR packages"
-pamac build --no-confirm spotify ttf-ms-fonts
+pamac build --no-confirm spotify ttf-ms-fonts sunway
 
 # Install programs
 echo "Installing programs"

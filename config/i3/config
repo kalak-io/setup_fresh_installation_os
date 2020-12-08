@@ -212,7 +212,7 @@ exec --no-startup-id spotify --force-device-scale-factor=1.5
 ## OSD
 exec --no-startup-id dunst
 # Background
-exec --no-startup-id feh --bg-fill $HOME/Pictures/hua-niao_Samantha-Everton.jpg
+exec --no-startup-id $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/dynamic_wallpaper.sh $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-morning.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-day.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-evening.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-night.jpg
 # Lock screen
 bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh
 

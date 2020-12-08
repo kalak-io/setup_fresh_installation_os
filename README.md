@@ -1,7 +1,6 @@
 # Setup a fresh installation of Ubuntu
 
 My script to reinstall my personal configuration
-Inspiration from [Victoria Drake](https://victoria.dev/) - [Dotfiles](https://github.com/victoriadrake/dotfiles)
 
 ### Linux OS
 
@@ -22,3 +21,11 @@ In shell container
 ```sh
 sh -c "$(wget  https://raw.githubusercontent.com/kalak-io/setup_fresh_installation_os/master/setup.sh -O -)"
 ```
+
+### Credits
+# Dynamic wallpapers
+[Dynamic Wallpaper Club](https://dynamicwallpaper.club/wallpaper/ma10m2ab50s)
+
+# Inspiration
+[Victoria Drake](https://victoria.dev/) - [Dotfiles](https://github.com/victoriadrake/dotfiles)
+[Piotr Wittchen](https://wittchen.io/) - [Dotfiles](https://github.com/pwittchen/dotfiles)

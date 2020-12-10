@@ -62,6 +62,7 @@ PACKAGES=(
     scrot
     dunst
     ttf-ubuntu-font-family
+    cronie
 )
 
 # Choose pacman-mirrors
@@ -119,6 +120,9 @@ echo vm.swappiness=5 | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 echo vm.vfs_cache_pressure=50 | sudo tee -a /etc/sysctl.d/99-sysctl.conf
 sudo swapoff -a
 sudo swapon -a
+
+# Enable Cron
+systemctl enable cronie
 
 # Enable Preload
 echo "Configuring Preload"

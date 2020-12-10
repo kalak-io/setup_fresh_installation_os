@@ -9,7 +9,7 @@ then
 elif [ $DISTRO == "ManjaroLinux" ] || [ $DISTRO == "Arch" ]
 then
     echo "Arch base";
-    sudo pacman -Syy && sudo pacman -S --noconfirm --needed git
+    sudo pacman -Sy --noconfirm --needed git
 else
     echo "Unsupported distro";
     exit 2
@@ -35,6 +35,10 @@ elif [ $DISTRO == "ManjaroLinux" ]
 then
     echo "Manjaro";
     ./manjaro.sh
+elif [ $DISTRO == "ArchLinux" ]
+then
+    echo "Arch";
+    ./arch.sh
 else
     echo "Unsupported distro";
 fi

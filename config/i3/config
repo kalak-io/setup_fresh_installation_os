@@ -169,18 +169,21 @@ bindsym $mod+r mode "resize"
 bar {
         status_command i3status
         position top
-        font pango:UbuntuMono 12
+        font pango:UbuntuMono 11
         separator_symbol "⁞"
+        # Disable mouse scroll in i3bar
+        bindsym button4 nop
+        bindsym button5 nop
         colors {
           background #000000
-          statusline #FCFFFD
-          separator  #FFD046
+          statusline #FFFFFF
+          separator  #FFFFFF
 
-          focused_workspace  #000000 #000000 #FFD046
-          active_workspace   #000000 #000000 #EADAA2
-          inactive_workspace #000000 #000000 #FCFFFD
-          urgent_workspace   #000000 #000000 #960200
-          binding_mode       #000000 #000000 #CE6C47
+          focused_workspace  #FFFFFF #FFFFFF #000000
+          active_workspace   #FFFFFF #FFFFFF #000000
+          inactive_workspace #000000 #000000 #FFFFFF
+          urgent_workspace   #FFFFFF #000000 #FFFFFF
+          binding_mode       #000000 #000000 #FFFFFF
         }
     }
 
@@ -212,7 +215,7 @@ exec --no-startup-id spotify --force-device-scale-factor=1.5
 ## OSD
 exec --no-startup-id dunst
 # Background
-exec --no-startup-id $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/dynamic_wallpaper.sh $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-morning.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-day.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-evening.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-night.jpg
+exec_always --no-startup-id $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/dynamic_wallpaper.sh $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-morning.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-day.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-evening.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-night.jpg
 # Lock screen
 bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh
 

@@ -156,6 +156,10 @@ alias wikit="wikit -b --lang fr"
 alias -s vue=vim
 alias -s js=vim
 
+# Disable auto correct
+alias npx="nocorrect npx"
+alias vim="nocorrect vim"
+
 # Common Mistakes
 alias ct='cat'
 alias im='vim'

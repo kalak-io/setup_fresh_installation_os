@@ -43,7 +43,7 @@ echo "Installing fonts"
 
 # Install desktop environment
 echo "Installing desktop environment packages"
-sudo pacman -S --noconfirm --needed xorg i3-gaps i3blocks i3lock rofi feh dunst
+sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst
 
 # Configure display manager
 echo "Installing display manager"
@@ -59,7 +59,7 @@ sudo pacman -S --noconfirm --needed firefox firefox-developer-edition chromium
 
 # Install utilities
 echo "Installing utilities"
-sudo pacman -S --noconfirm --needed ufw preload clamav tlp cronie systemd-swap
+sudo pacman -S --noconfirm --needed ufw preload clamav tlp thermald cronie systemd-swap bluez
 pacaur -S --noedit --noconfirm --needed redshift-minimal
 
 # Install softwares
@@ -95,6 +95,17 @@ echo "Configuring TLP"
 sudo pacman install --noconfirm --needed tlp
 sudo tlp start
 sudo systemctl enable tlp --now
+
+# Enalbe Thermald
+echo "Enabling Thermald"
+sudo pacman install --noconfirm --needed thermald
+sudo systemctl enable thermald.service
+sudo systemctl start thermald.service
+
+# Enable bluetooth
+echo "Enabling Bluetooth"
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
 
 # Enable TRIM
 echo "Enabling TRIM"

@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# checks if all modifications are commited
+RESULT="$(git status | grep 'modified:' | wc -l)"
+if [ $RESULT -ne 0 ]; then
+	echo "Can't push when changes not staged exist"
+	exit 1
+fi
+
+# runs all tests suite
+CMD="npm run test --prefix frontend/"
+$CMD
+RESULT=$?
+if [ $RESULT -ne 0 ]; then
+	echo "Can't push when tests suite failed"
+	exit 1
+fi
+
+exit 0

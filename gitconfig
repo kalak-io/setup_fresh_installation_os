@@ -25,3 +25,5 @@
     plog = log --graph --pretty=format:'%C(bold blue)%h%Creset - %C(yellow)%d%Creset %s %C(cyan dim)(%cr)%Creset %n' --abbrev-commit --branches
 [pull]
 	rebase = false
+[help]
+	autocorrect = 1

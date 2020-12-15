@@ -20,3 +20,16 @@ ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/termi
 # transmission
 rm -rf $HOME/.config/transmission
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/transmission $HOME/.config/transmission
+# i3
+rm -rf $HOME/.config/i3
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3 $HOME/.config/i3
+rm -rf $HOME/.config/i3status
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3status $HOME/.config/i3status
+rm -rf $HOME/.config/dunst
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/dunst $HOME/.config/dunst
+# redshift
+rm -rf $HOME/.config/redshift
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/redshift $HOME/.config/redshift
+# conky
+rm -rf $HOME/.config/conky
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/conky $HOME/.config/conky

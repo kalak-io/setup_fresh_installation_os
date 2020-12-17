@@ -85,7 +85,7 @@ sudo pacman -S --noconfirm --needed firefox firefox-developer-edition chromium
 
 # Install utilities
 echo "Installing utilities"
-sudo pacman -S --noconfirm --needed ufw preload clamav tlp thermald cronie systemd-swap bluez
+sudo pacman -S --noconfirm --needed ufw preload clamav tlp thermald cronie systemd-swap bluez bleachbit
 pacaur -S --noedit --noconfirm --needed redshift-minimal
 
 # Install softwares

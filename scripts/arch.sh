@@ -1,35 +1,58 @@
 #!/usr/bin/env bash
 
-# Choose pacman-mirrors
+# Variables
+username=kalak
+
+### CONFIGURING PACMAN ###
+# Update pacman-mirrors
 echo "Updating pacman mirrors"
-sudo pacman-mirrors --fasttrack 5 && sudo pacman -Sy --noconfirm
+pacman -Sy reflector --noconfirm
+# Backup initial file
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+reflector --latest 5 --sort rate --save /etc/pacman.d/mirrorlist
 
 # Configure pacman with aria2
 echo "Configuring Pacman with aria2"
-sudo pacman -S --noconfirm --needed aria2
-echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u" | sudo tee -a /etc/pacman.conf
+pacman -S --noconfirm --needed aria2
+echo "XferCommand = /usr/bin/aria2c --allow-overwrite=true --continue=true --file-allocation=none --log-level=error --max-tries=2 --max-connection-per-server=2 --max-file-not-found=5 --min-split-size=5M --no-conf --remote-time=true --summary-interval=60 --timeout=5 --dir=/ --out %o %u" | tee -a /etc/pacman.conf
 
 # Upgrading packages
 echo "Upgrading packages"
-sudo pacman -Su --noconfirm
+pacman -Su --noconfirm
 
+### CREATING USER ###
+# Install sudo package
+echo "Installing sudo package"
+pacman -S sudo --noconfirm
+echo "Create new user"
+useradd -m -G wheel -s /bin/bash $username
+passwd $username
+sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /etc/sudoers
+
+# Switch root to user
+echo "Switching to $username"
+su $username
+
+### AUR SUPPORT ###
 # Install an AUR helper
 echo "Installing auracle-git"
-sudo pacman -S --noconfirm --needed base-devel git meson gtest gmock wget
+sudo pacman -S --noconfirm --needed base-devel git meson gtest gmock wget cmake fmt
 cd /tmp
 wget https://aur.archlinux.org/cgit/aur.git/snapshot/auracle-git.tar.gz
 tar -xzf auracle-git.tar.gz
 cd auracle-git
+export PATH=$PATH:/usr/bin/core_perl
 makepkg PKGBUILD --skippgpcheck --noconfirm
 sudo pacman -U --noconfirm auracle-git-*
 echo "Installing AUR helper"
-sudo pacman -S --noconfirm--needed binutils make gcc fakeroot expac yajl git
+sudo pacman -S --noconfirm --needed binutils make gcc fakeroot expac yajl git
 cd /tmp
 git clone https://aur.archlinux.org/pacaur.git
 cd pacaur
 makepkg -si --noconfirm
 cd
 
+### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
 sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel
@@ -47,6 +70,9 @@ sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst
 
 # Configure display manager
 echo "Installing display manager"
+sudo pacman -S --noconfirm --needed vim
+export VISUAL=/usr/bin/vim
+export EXPORT=/usr/bin/vim
 pacaur -S --noedit --noconfirm --needed ly
 sed -i 's/^#hide_boders/hide_borders/' /etc/ly/config.ini
 sed -i 's/^#load/load/' /etc/ly/config.ini
@@ -92,18 +118,19 @@ sudo systemctl enable preload
 
 # Enable TLP
 echo "Configuring TLP"
-sudo pacman install --noconfirm --needed tlp
+sudo pacman -S --noconfirm --needed tlp
 sudo tlp start
 sudo systemctl enable tlp --now
 
 # Enalbe Thermald
 echo "Enabling Thermald"
-sudo pacman install --noconfirm --needed thermald
+sudo pacman -S --noconfirm --needed thermald
 sudo systemctl enable thermald.service
 sudo systemctl start thermald.service
 
 # Enable bluetooth
 echo "Enabling Bluetooth"
+sudo pacman -S --noconfirm --needed bluez
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 

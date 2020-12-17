@@ -133,8 +133,6 @@ fi
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias MAJ="pamac upgrade -a"
-alias clear_apt="sudo apt autoclean && sudo apt clean && sudo apt autoremove -y"
 alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
 alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
 alias clear_history="echo -n '' > $HOME/.*_history"
@@ -142,7 +140,9 @@ alias clear_vim="rm -rf $HOME/.vim/tmp_dirs/undodir/*"
 alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
 alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
 alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
-alias replace='f() { ag -0 -l $1 | xargs -0 sed -i "s%$1%$2%g" };f'
+alias replace="f() { ag -0 -l $1 | xargs -0 sed -i 's%$1%$2%g' };f"
+function mkcd() { mkdir -p "$@" && cd "$_"; }
+alias mkcd="mkcd"
 
 alias personal="cd $HOME/Documents/projects/personal"
 alias unifai="cd $HOME/Documents/projects/professional/unifai"

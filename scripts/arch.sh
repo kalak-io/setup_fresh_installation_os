@@ -91,6 +91,9 @@ pacaur -S --noedit --noconfirm --needed redshift-minimal
 # Install softwares
 echo "Installing other softwares"
 sudo pacman -S --noconfirm --needed libreoffice-still transmission-cli
+echo "Retrieving GPG keys"
+sudo pacman -S --noconfirm --needed curl npm
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 pacaur -S --noedit --noconfirm -needed spotify slack-desktop balena-etcher
 
 # Install codecs (a lot of codecs are dependencies of vlc)

@@ -22,6 +22,9 @@ In shell container
 sh -c "$(wget  https://raw.githubusercontent.com/kalak-io/setup_fresh_installation_os/master/setup.sh -O -)"
 ```
 
+# Post-Installation
+Don't forget to registry in Gitlab
+
 ### Credits
 # Dynamic wallpapers
 [Dynamic Wallpaper Club](https://dynamicwallpaper.club/wallpaper/ma10m2ab50s)

@@ -91,7 +91,7 @@ pacaur -S --noedit --noconfirm --needed redshift-minimal
 # Install softwares
 echo "Installing other softwares"
 sudo pacman -S --noconfirm --needed libreoffice-still transmission-cli
-pacaur -S --noedit --noconfirm -needed spotify sunway slack-desktop balena-etcher
+pacaur -S --noedit --noconfirm -needed spotify slack-desktop balena-etcher
 
 # Install codecs (a lot of codecs are dependencies of vlc)
 echo "Installing codecs"

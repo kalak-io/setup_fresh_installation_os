@@ -33,3 +33,6 @@ ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/redsh
 # conky
 rm -rf $HOME/.config/conky
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/conky $HOME/.config/conky
+# Xresources
+rm -rf $HOME/.Xresources
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/Xresources $HOME/.Xresources

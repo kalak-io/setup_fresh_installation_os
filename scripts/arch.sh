@@ -66,7 +66,7 @@ echo "Installing fonts"
 
 # Install desktop environment
 echo "Installing desktop environment packages"
-sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst
+sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot
 
 # Configure display manager
 echo "Installing display manager"

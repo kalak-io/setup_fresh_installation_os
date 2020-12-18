@@ -66,7 +66,8 @@ echo "Installing fonts"
 
 # Install desktop environment
 echo "Installing desktop environment packages"
-sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot
+# sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot
+sudo pacman -S --noconfirm --needed wayland sway swaylock swayidle wofi ranger
 
 # Configure display manager
 echo "Installing display manager"
@@ -172,7 +173,8 @@ sudo freshclam
 # Configure Docker
 echo "Configuring Docker"
 sudo pacman -S --noconfirm --needed docker
-sudo usermod -aG docker $LOGNAME
+sudo groupadd docker
+sudo gpasswd -a $LOGNAME docker
 sudo systemctl enable docker
 docker run hello-world
 # Install Docker Compose

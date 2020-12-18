@@ -1,9 +1,5 @@
-FROM ubuntu:20.04
+FROM archlinux:latest
 
-RUN apt-get update
-RUN apt-get install -y wget sudo
-RUN useradd -m docker && echo "docker:docker" | chpasswd && adduser docker sudo
+COPY scripts/arch.sh /
 
-CMD ["/bin/bash"]
-
-USER docker
+CMD [ "/bin/bash", "./arch.sh" ]

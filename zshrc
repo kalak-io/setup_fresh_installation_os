@@ -160,6 +160,8 @@ alias -s js=vim
 alias npx="nocorrect npx"
 alias vim="nocorrect vim"
 
+alias ag="ag --ignore-dir=coverage"
+
 # Common Mistakes
 alias ct='cat'
 alias im='vim'

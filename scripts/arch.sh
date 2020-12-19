@@ -55,24 +55,90 @@ cd
 ### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
-sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db
+sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_search fzf ssh python-pip python-virtualenv nodejs npm transmission-cli docker 
 
-# Install dev tools
-echo "Installing dev tools"
-sudo pacman -S --noconfirm --needed git vim zsh terminator the_silver_searcher fzf docker python-pip python-virtualenv nodejs npm ssh
+# Install codecs (a lot of codecs are dependencies of vlc)
+echo "Installing codecs"
+sudo pacman -S --noconfirm --needed vlc faac jasper libdv wavpack
+
+# Install archives format
+echo "Installing archives format"
+sudo pacman -S --noconfirm --needed p7zip p7zip-plugins unrar tar rsync
+
+# Install softwares
+echo "Installing GUI softwares"
+sudo pacman -S --noconfirm --needed bleachbit terminator firefox firefox-developer-edition chromium libreoffice-still inkscape
 
 # Install fonts
 echo "Installing fonts"
 sudo pacman -S --noconfirm --needed ttf-font-awesome
 pacaur -S --noedit --noconfirm --needed nerd-fonts-complete
 
+# Install softwares from AUR
+echo "Retrieving GPG keys"
+sudo pacman -S --noconfirm --needed curl npm
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
+echo "Installing softwares from AUR"
+pacaur -S --noedit --noconfirm -needed spotify slack-desktop balena-etcher
+
+# Configure Docker
+echo "Configuring Docker"
+sudo pacman -S --noconfirm --needed docker
+sudo groupadd docker
+sudo gpasswd -a $LOGNAME docker
+sudo systemctl enable docker
+docker run hello-world
+# Install Docker Compose
+echo "Installing Docker Compose"
+sudo curl -L "https://github.com/docker/compose/releases/download/1.27.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+# Installing npm packages
+echo "Installing npm packages"
+mkdir -p $HOME/.npm
+npm config set prefix $HOME/.npm
+sudo chown -R $USER $HOME/.npm
+
+echo "Installing Vue"
+npm install -g vue
+npm install -g @vue/cli
+npm install -g nuxt
+npm install -g json-server
+
+echo "Installing Gitmoji"
+npm install -g gitmoji-cli
+
+echo "Installing linting"
+npm install -g eslint prettier eslint-plugin-vue
+
+# Configuring Zsh
+echo "Installing ZSH and Oh-my-zsh"
+sudo pacman -S --noconfirm --needed zsh
+rm -rf $HOME/.oh-my-zsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+rm -f $HOME/.zshrc $HOME/.zshrc.pre-oh-my-zsh
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/zshrc $HOME/.zshrc
+
+echo "Configuring vim"
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/vimrc $HOME/.vimrc
+mkdir -p $HOME/.vim/bundle/
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+vim +PluginInstall +qall && python $HOME/.vim/bundle/youcompleteme/install.py --ts-completer
+
+echo "Installing Python Packages"
+pip3 install pre-commit virtualenv virtualenvwrapper
+
+git clone https://github.com/pyenv/pyenv.git $HOME/.pyenv
+git clone https://github.com/yyuu/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
+
+### DESKTOP ENVIRONMENT ###
 # Install desktop environment
 echo "Installing desktop environment packages"
 ## i3
 # sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight
 # pacaur -S --noedit --noconfirm --needed redshift-minimal
 ## sway
-sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep light
+sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep light wclip
 
 # Configure display manager
 echo "Installing display manager"
@@ -85,30 +151,7 @@ sed -i 's/^#load/load/' /etc/ly/config.ini
 sed -i 's/^#save/save/' /etc/ly/config.ini
 sudo systemctl enable ly.service
 
-# Install browsers
-echo "Installing browsers"
-sudo pacman -S --noconfirm --needed firefox firefox-developer-edition chromium
-
-# Install utilities
-echo "Installing utilities"
-sudo pacman -S --noconfirm --needed ufw preload clamav tlp thermald cronie systemd-swap bluez bleachbit
-
-# Install softwares
-echo "Installing other softwares"
-sudo pacman -S --noconfirm --needed libreoffice-still transmission-cli inkscape
-echo "Retrieving GPG keys"
-sudo pacman -S --noconfirm --needed curl npm
-curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
-pacaur -S --noedit --noconfirm -needed spotify slack-desktop balena-etcher
-
-# Install codecs (a lot of codecs are dependencies of vlc)
-echo "Installing codecs"
-sudo pacman -S --noconfirm --needed vlc faac jasper libdv wavpack
-
-# Install archives format
-echo "Installing archives format"
-sudo pacman -S --noconfirm --needed p7zip p7zip-plugins unrar tar rsync
-
+### ENABLING SERVICES ###
 # Enable NetworkManager
 sudo pacman -S --noconfirm --needed networkmanager
 sudo systemctl enable NetworkManager
@@ -151,6 +194,14 @@ echo "Enabling cron"
 sudo pacman -S --noconfirm --needed cronie
 systemctl enable cronie
 
+# Enable Clamav
+echo "Configuring Clamav"
+sudo pacman -S --noconfirm --needed clamav
+sudo systemctl enable clamav-daemon.service
+sudo systemctl start clamav-daemon.service
+sudo freshclam
+
+### CONFIGURING SWAP ###
 # Configure swapiness
 echo "Configuring swapiness"
 sudo rm /etc/sysctl.d/99-swappiness.conf
@@ -166,24 +217,57 @@ sudo sed -i 's/^#zram_enabled=0/zram_enabled=1/' /etc/systemd/swap.conf
 sudo sed -i 's/^#swapfc_enabled=0/swapfc_enabled=1/' /etc/systemd/swap.conf
 sudo systemctl enable --now systemd-swap
 echo "/swapfile none swap defaults 0 0" | sudo tee -a /etc/fstab
+sudo swapoff -a
+sudo swapon -a
 
-# Enable Clamav
-echo "Configuring Clamav"
-sudo pacman -S --noconfirm --needed clamav
-sudo systemctl enable clamav-daemon.service
-sudo systemctl start clamav-daemon.service
-sudo freshclam
+### GIT REPOSITORIES ###
+PERSONAL="
+    git@gitlab.com:kalak/py_utils.git
+    git@github.com:kalak-io/reduce_pdf_size.git
+    git@github.com:kalak-io/archives_extractor.git
+"
 
-# Configure Docker
-echo "Configuring Docker"
-sudo pacman -S --noconfirm --needed docker
-sudo groupadd docker
-sudo gpasswd -a $LOGNAME docker
-sudo systemctl enable docker
-docker run hello-world
-# Install Docker Compose
-echo "Installing Docker Compose"
-sudo curl -L "https://github.com/docker/compose/releases/download/1.27.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
+UNIFAI="
+    git@gitlab.com:unifai/free-trial.git
+    --recursive git@gitlab.com:unifai/indiana.git
+    git@gitlab.com:unifai/indiana-api.git
+    git@gitlab.com:unifai/intersport.git
+    git@gitlab.com:unifai/the-agent.git
+    git@gitlab.com:unifai/mvp-theagent.git
+    git@gitlab.com:unifai/click-and-care.git
+    git@gitlab.com:unifai/self-service.git
+"
+
+echo "Pulling git repositories"
+# Create ssh key
+SSH_KEY=$HOME/.ssh/id_rsa
+if [ ! -f "$SSH_KEY" ]; then
+    echo "Generating ssh key"
+    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null -b 4096 -C "clement@unifai.fr"
+    ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
+    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
+    eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
+    wclip -sel clip < $HOME/.ssh/id_rsa.pub
+    echo "Contents of the id_rsa.pub copied!"
+    read -rp 'Did you add your ssh keys in different git services ? Y or N ' answer
+    if [ "$answer" = 'N' ] || [ "$answer" = 'n' ]; then
+        exit 1
+    fi
+fi
+
+# Personal repositories
+mkdir -p $HOME/Documents/projects/personal && cd $_
+for p in $PERSONAL; do
+    git clone $p;
+done
+
+# UNiFAi repositories
+mkdir -p $HOME/Documents/projects/professional/unifai && cd $_
+for u in $UNIFAI; do
+    git clone $u;
+done
+
+cd
+
 
 echo "Finished!"

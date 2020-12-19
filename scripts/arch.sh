@@ -55,7 +55,7 @@ cd
 ### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
-sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_search fzf ssh python-pip python-virtualenv nodejs npm transmission-cli docker 
+sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker
 
 # Install codecs (a lot of codecs are dependencies of vlc)
 echo "Installing codecs"
@@ -79,13 +79,13 @@ echo "Retrieving GPG keys"
 sudo pacman -S --noconfirm --needed curl npm
 curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | gpg --import -
 echo "Installing softwares from AUR"
-pacaur -S --noedit --noconfirm -needed spotify slack-desktop balena-etcher
+pacaur -S --noedit --noconfirm -needed spotify slack-desktop balena-etcher preload
 
 # Configure Docker
 echo "Configuring Docker"
 sudo pacman -S --noconfirm --needed docker
 sudo groupadd docker
-sudo gpasswd -a $LOGNAME docker
+sudo gpasswd -a $username docker
 sudo systemctl enable docker
 docker run hello-world
 # Install Docker Compose
@@ -120,6 +120,7 @@ rm -f $HOME/.zshrc $HOME/.zshrc.pre-oh-my-zsh
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/zshrc $HOME/.zshrc
 
 echo "Configuring vim"
+sudo pacman -S --noconfirm --needed vim
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/vimrc $HOME/.vimrc
 mkdir -p $HOME/.vim/bundle/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -239,6 +240,7 @@ UNIFAI="
 "
 
 echo "Pulling git repositories"
+sudo pacman -S --noconfirm --needed openssh
 # Create ssh key
 SSH_KEY=$HOME/.ssh/id_rsa
 if [ ! -f "$SSH_KEY" ]; then

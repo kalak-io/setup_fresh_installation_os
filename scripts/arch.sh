@@ -67,7 +67,7 @@ sudo pacman -S --noconfirm --needed p7zip p7zip-plugins unrar tar rsync
 
 # Install softwares
 echo "Installing GUI softwares"
-sudo pacman -S --noconfirm --needed bleachbit terminator firefox firefox-developer-edition chromium libreoffice-still inkscape
+sudo pacman -S --noconfirm --needed bleachbit firefox firefox-developer-edition chromium libreoffice-still inkscape
 
 # Install fonts
 echo "Installing fonts"
@@ -135,10 +135,10 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyen
 # Install desktop environment
 echo "Installing desktop environment packages"
 ## i3
-# sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight
+# sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight terminator
 # pacaur -S --noedit --noconfirm --needed redshift-minimal
 ## sway
-sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep light wclip
+sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep light wclip alacritty
 
 # Configure display manager
 echo "Installing display manager"

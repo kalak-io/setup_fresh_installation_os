@@ -7,27 +7,32 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {
+        output_format = "i3bar"
         colors = true
+        color_good = "#50FA7B"
+        color_degraded = "#F1FA8C"
+        color_bad = "#FF5555"
         interval = 5
-        color_good = "#FCFFFD"
-        color_bad = "#960200"
-        color_degraded = "#FFD046"
+        markup = "pango"
+        # color_good = "#FCFFFD"
+        # color_bad = "#960200"
+        # color_degraded = "#FFD046"
 }
 
 # order += "ipv6"
-# order += "wireless _first_"
+order += "wireless _first_"
 # order += "ethernet _first_"
 # order += "battery all"
 # order += "disk /"
 # order += "load"
 # order += "memory"
-order += "tztime local"
-order += "volume master"
+# order += "volume master"
 order += "battery 0"
+order += "tztime local"
 
 wireless _first_ {
-        format_up = "W: (%quality at %essid) %ip"
-        format_down = "W: down"
+        format_up = "<span size='large' font_weight='light'></span>"
+        format_down = "<span size='large' font_weight='light'></span>"
 }
 
 ethernet _first_ {
@@ -40,13 +45,13 @@ battery all {
 }
 
 battery 0 {
-        format = "%status %percentage"
+        format = "%status"
         integer_battery_capacity = true
-        format_down = ""
-        status_chr = ""
-        status_bat = ""
-        status_unk = ""
-        status_full = ""
+        format_down = "<span size='large' font_weight='light'></span>"
+        status_chr = "<span size='large' font_weight='light'></span>"
+        status_bat = "<span size='large' font_weight='light'></span>"
+        status_unk = "<span size='large' font_weight='light'></span>"
+        status_full = "<span size='large' font_weight='light'></span>"
         path = "/sys/class/power_supply/BAT%d/uevent"
         low_threshold = 10
 }
@@ -66,8 +71,7 @@ memory {
 }
 
 tztime local {
-        format = "%Y-%m-%d - %H:%M"
-        align = "center"
+        format = "%H:%M"
 }
 
 volume master {

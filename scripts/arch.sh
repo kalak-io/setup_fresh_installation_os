@@ -55,19 +55,24 @@ cd
 ### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
-sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel
+sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db
 
 # Install dev tools
 echo "Installing dev tools"
-sudo pacman -S --noconfirm --needed git vim zsh terminator the_silver_searcher fzf docker python-pip python-virtualenv nodejs npm
+sudo pacman -S --noconfirm --needed git vim zsh terminator the_silver_searcher fzf docker python-pip python-virtualenv nodejs npm ssh
 
 # Install fonts
 echo "Installing fonts"
+sudo pacman -S --noconfirm --needed ttf-font-awesome
+pacaur -S --noedit --noconfirm --needed nerd-fonts-complete
 
 # Install desktop environment
 echo "Installing desktop environment packages"
-# sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot
-sudo pacman -S --noconfirm --needed wayland sway swaylock swayidle wofi ranger
+## i3
+# sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight
+# pacaur -S --noedit --noconfirm --needed redshift-minimal
+## sway
+sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep light
 
 # Configure display manager
 echo "Installing display manager"
@@ -87,7 +92,6 @@ sudo pacman -S --noconfirm --needed firefox firefox-developer-edition chromium
 # Install utilities
 echo "Installing utilities"
 sudo pacman -S --noconfirm --needed ufw preload clamav tlp thermald cronie systemd-swap bluez bleachbit
-pacaur -S --noedit --noconfirm --needed redshift-minimal
 
 # Install softwares
 echo "Installing other softwares"

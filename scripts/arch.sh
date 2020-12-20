@@ -55,7 +55,7 @@ cd
 ### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
-sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker
+sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker terminator
 
 # Install codecs (a lot of codecs are dependencies of vlc)
 echo "Installing codecs"
@@ -139,7 +139,13 @@ echo "Installing desktop environment packages"
 # sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight terminator
 # pacaur -S --noedit --noconfirm --needed redshift-minimal
 ## sway
-sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip alacritty mako pulseaudio pulseaudio-alsa alsa-utils grim wl-clipboard slurp
+sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip mako pulseaudio pulseaudio-alsa alsa-utils grim wl-clipboard slurp
+# Configuring dynamic wallpaper
+# From: https://sylvaindurand.org/dynamic-wallpapers-with-sway/
+# cd /tmp
+# git clone https://git.durand.tf/sylvaindurand/lakeside.git
+# mkdir -p ~/.config/sway
+# cp -r ./lakeside/img ~/.config/sway/
 
 # Configure display manager
 echo "Installing display manager"

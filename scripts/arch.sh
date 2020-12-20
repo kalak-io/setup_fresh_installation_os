@@ -139,7 +139,7 @@ echo "Installing desktop environment packages"
 # sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight terminator
 # pacaur -S --noedit --noconfirm --needed redshift-minimal
 ## sway
-sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep light wclip alacritty
+sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip alacritty mako pulseaudio pulseaudio-alsa alsa-utils grim wl-clipboard slurp
 
 # Configure display manager
 echo "Installing display manager"

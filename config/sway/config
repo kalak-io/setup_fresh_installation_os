@@ -18,7 +18,8 @@ set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# set $menu dmenu_path | dmenu | xargs swaymsg exec --
+set $menu wofi --show run
 
 ### Output configuration
 #
@@ -39,6 +40,7 @@ exec swayidle -w \
          timeout 300 'swaylock -f -c 000000' \
          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -195,8 +197,31 @@ mode "resize" {
     bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+#
+# Brightness:
+#
+## increase screen brightness
+bindsym --locked XF86MonBrightnessUp exec "brightnessctl s 10%+"
+## decrease screen brightness
+bindsym --locked XF86MonBrightnessDown exec "brightnessctl s 10%-"
+#
+# Volume:
+#
 
 #
+# Media player:
+#
+bindsym --locked XF86AudioPlay exec playerctl play-pause
+
+#
+# Screenshots:
+#
+# Fullscreen
+bindsym Print exec ~/.config/sway/screenshot.sh saveFullScreen
+# Selected screen
+bindsym Shift+Print exec ~/.config/sway/screenshot.sh saveSelectedScreen
+# Copy selected screen
+bindsym $mod+Shift+Print exec ~/.config/sway/screenshot.sh copySelectedScreen
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
@@ -212,6 +237,15 @@ bar {
         background #323232
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
+}
+
+# Window borders
+default_border none
+
+# Input configuration
+input * {
+    xkb_layout us
+    xkb_variant alt-intl
 }
 
 include /etc/sway/config.d/*

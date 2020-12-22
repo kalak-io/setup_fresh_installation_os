@@ -181,7 +181,7 @@ bar {
   status_command i3status
     tray_output none
     position top
-    font pango:UubntuMono 12
+    font pango:UbuntuMono 11
     separator_symbol "  "
     bindsym button4 nop
     bindsym button5 nop
@@ -209,16 +209,17 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 ## Lock screen
 # bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh && systemctl suspend
-bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/dynamic_wallpaper.sh setLockedBackground && systemctl suspend
+bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/i3lock.sh && systemctl suspend
 
 ## Autostart
 # Basckground
 exec --no-startup-id $HOME/.config/i3/dynamic_wallpaper.sh setBackground zelda
 # Set startup volume
 exec_always --no-startup-id pactl set-sink-volume 0 '20%'
-## Disable beeps
+# Disable beeps
 exec_always --no-startup-id xset -b
-exec --no-startup-id redshift
+# Launch softwares
+exec --no-startup-id redshift-minimal
 exec --no-startup-id slack
 exec --no-startup-id conky -d
 

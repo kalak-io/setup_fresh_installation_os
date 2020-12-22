@@ -210,6 +210,9 @@ bindsym XF86AudioPrev exec playerctl previous
 ## Lock screen
 # bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh && systemctl suspend
 bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/i3lock.sh && systemctl suspend
+## Screenshots
+bindsym Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveFullScreen
+# bindsym Shift+Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveArea
 
 ## Autostart
 # Basckground

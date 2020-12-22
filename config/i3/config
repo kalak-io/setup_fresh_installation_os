@@ -52,14 +52,25 @@ bindsym $mod+Shift+q kill
 # bindcode $mod+40 exec rofi -modi drun,run -show drun
 # There also is i3-dmenu-desktop which only displays applications shipping a
 # .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 bindsym $mod+d exec --no-startup-id rofi -show
+
+# change focus
+# bindsym $mod+j focus left
+# bindsym $mod+k focus down
+# bindsym $mod+l focus up
+# bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
+
+# move focused window
+# bindsym $mod+Shift+j move left
+# bindsym $mod+Shift+k move down
+# bindsym $mod+Shift+l move up
+# bindsym $mod+Shift+semicolon move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -88,23 +99,13 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+p focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
-bindsym $mod+c focus child
+#bindsym $mod+d focus child
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-# set $ws1 ""
-# set $ws2 ""
-# set $ws3 ""
-# set $ws4 ""
-# set $ws5 ""
-# set $ws6 ""
-# set $ws7 ""
-# set $ws8 ""
-# set $ws9 ""
-# set $ws10 ""
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -149,108 +150,81 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+# These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+# Pressing left will shrink the window’s width.
+# Pressing right will grow the window’s width.
+# Pressing up will shrink the window’s height.
+# Pressing down will grow the window’s height.
+  bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+# same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+# back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-# class                 border  bground text    indicator child_border
-client.focused          #6272A4 #6272A4 #F8F8F2 #6272A4   #6272A4
-client.focused_inactive #44475A #44475A #F8F8F2 #44475A   #44475A
-client.unfocused        #282A36 #282A36 #BFBFBF #282A36   #282A36
-client.urgent           #44475A #FF5555 #F8F8F2 #FF5555   #FF5555
-client.placeholder      #282A36 #282A36 #F8F8F2 #282A36   #282A36
-
-client.background       #F8F8F2
-
-# bindsym $mod+d exec "dmenu_run -nf '#F8F8F2' -nb '#282A36' -sb '#6272A4' -sf '#F8F8F2' -fn 'monospace-10' -p 'dmenu%'"
 bar {
-        # status_command i3blocks -c $HOME/.config/i3/i3blocks.conf
-        status_command i3status
-        tray_output none
-        position top
-        font pango:UbuntuMono 12
-        separator_symbol "  "
-        # Disable mouse scroll in i3bar
-        bindsym button4 nop
-        bindsym button5 nop
-        colors {
-          background #000000
-          statusline #FFFFFF
-          separator  #FFFFFF
-
-          # focused_workspace  #50FA7B #50FA7B #000000
-          # active_workspace   #50FA7B #50FA7B #000000
-          # inactive_workspace #000000 #000000 #50FA7B
-          # urgent_workspace   #50FA7B #000000 #50FA7B
-          # binding_mode       #000000 #000000 #50FA7B
-          focused_workspace  #FFFFFF #FFFFFF #000000
-          active_workspace   #FFFFFF #FFFFFF #000000
-          inactive_workspace #000000 #000000 #FFFFFF
-          urgent_workspace   #FFFFFF #000000 #FFFFFF
-          binding_mode       #000000 #000000 #FFFFFF
-        }
+  status_command i3status
+    tray_output none
+    position top
+    font pango:UubntuMono 12
+    separator_symbol "  "
+    bindsym button4 nop
+    bindsym button5 nop
+    colors {
+      background #000000
+        statusline #FFFFFF
+        separator  #FFFFFF
+        focused_workspace  #FFFFFF #FFFFFF #000000
+        active_workspace   #FFFFFF #FFFFFF #000000
+        inactive_workspace #000000 #000000 #FFFFFF
+        urgent_workspace   #FFFFFF #000000 #FFFFFF
+        binding_mode  #000000 #000000 #FFFFFF
     }
+}
 
 ### Customization ###
-## Suspend system
-bindsym $mod+Shift+s exec systemctl suspend
 ## Backlight
 # increase screen brightness
 bindsym XF86MonBrightnessUp exec xbacklight -inc 10
 # decrease screen brightness
 bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-
-
-## 
-# bindsym $mod+p exec pavucontrol 
 ## Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-## Set startup volume
+## Lock screen
+# bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh && systemctl suspend
+bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/dynamic_wallpaper.sh setLockedBackground && systemctl suspend
+
+## Autostart
+# Basckground
+exec --no-startup-id $HOME/.config/i3/dynamic_wallpaper.sh setBackground zelda
+# Set startup volume
 exec_always --no-startup-id pactl set-sink-volume 0 '20%'
 ## Disable beeps
 exec_always --no-startup-id xset -b
-
-## Autostart
 exec --no-startup-id redshift
 exec --no-startup-id slack
 exec --no-startup-id conky -d
-# exec --no-startup-id spotify --force-device-scale-factor=1.5
-## OSD
-exec --no-startup-id dunst
-# Background
-exec_always --no-startup-id $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/dynamic_wallpaper.sh $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-morning.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-day.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-evening.jpg $HOME/Documents/projects/personal/setup_fresh_installation_os/assets/wallpaper-night.jpg
-# Lock screen
-bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh && systemctl suspend
 
 ## Assignation
 assign [class="^firefox$"] $ws1
 assign [class="^Chromium$"] $ws2
-# assign [class="^Terminator$"] $ws3
 for_window [class="^Spotify$"] move --no-auto-back-and-forth to workspace $ws9
 assign [class="^Slack$"] $ws10
 

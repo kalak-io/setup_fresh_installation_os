@@ -136,10 +136,10 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyen
 # Install desktop environment
 echo "Installing desktop environment packages"
 ## i3
-# sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight terminator
-# pacaur -S --noedit --noconfirm --needed redshift-minimal
+sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight xclip
+pacaur -S --noedit --noconfirm --needed redshift-minimal
 ## sway
-sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip mako pulseaudio pulseaudio-alsa alsa-utils grim wl-clipboard slurp
+# sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip mako pulseaudio pulseaudio-alsa alsa-utils grim wl-clipboard slurp
 # Configuring dynamic wallpaper
 # From: https://sylvaindurand.org/dynamic-wallpapers-with-sway/
 # cd /tmp

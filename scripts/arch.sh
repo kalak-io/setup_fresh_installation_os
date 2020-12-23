@@ -71,7 +71,7 @@ sudo pacman -S --noconfirm --needed bleachbit firefox firefox-developer-edition 
 
 # Install fonts
 echo "Installing fonts"
-sudo pacman -S --noconfirm --needed ttf-font-awesome
+sudo pacman -S --noconfirm --needed ttf-font-awesome ttf-ubuntu-font-family
 pacaur -S --noedit --noconfirm --needed nerd-fonts-complete
 
 # Install softwares from AUR

@@ -145,6 +145,7 @@ function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias mkcd="mkcd"
 
 alias personal="cd $HOME/Documents/projects/personal"
+alias dotfiles="cd $HOME/Documents/projects/personal/setup_fresh_installation_os"
 alias unifai="cd $HOME/Documents/projects/professional/unifai"
 alias intersport="unifai && cd intersport && cd frontend"
 alias click-and-care="unifai && cd click-and-care && cd frontend"

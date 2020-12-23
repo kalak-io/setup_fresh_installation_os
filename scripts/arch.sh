@@ -55,7 +55,7 @@ cd
 ### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
-sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker terminator
+sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw preload clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker terminator pulseaudio pulseaudio-alsa alsa-utils 
 
 # Install codecs (a lot of codecs are dependencies of vlc)
 echo "Installing codecs"
@@ -135,11 +135,13 @@ git clone https://github.com/yyuu/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyen
 ### DESKTOP ENVIRONMENT ###
 # Install desktop environment
 echo "Installing desktop environment packages"
-## i3
+## i3 (X)
 sudo pacman -S --noconfirm --needed xorg i3-wm i3status i3lock rofi feh dunst scrot ranger xbacklight xclip
+# redshift doesn't work under wayland
 pacaur -S --noedit --noconfirm --needed redshift-minimal
-## sway
-# sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip mako pulseaudio pulseaudio-alsa alsa-utils grim wl-clipboard slurp
+sudo systemctl --user enable redshift.service
+## sway (Wayland)
+# sudo pacman -S --noconfirm --needed wayland sway waybar swaylock swayidle wofi ranger gammastep brightnessctl wclip mako grim wl-clipboard slurp
 # Configuring dynamic wallpaper
 # From: https://sylvaindurand.org/dynamic-wallpapers-with-sway/
 # cd /tmp

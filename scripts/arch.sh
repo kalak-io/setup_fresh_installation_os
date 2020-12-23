@@ -229,55 +229,5 @@ echo "/swapfile none swap defaults 0 0" | sudo tee -a /etc/fstab
 sudo swapoff -a
 sudo swapon -a
 
-### GIT REPOSITORIES ###
-PERSONAL="
-    git@gitlab.com:kalak/py_utils.git
-    git@github.com:kalak-io/reduce_pdf_size.git
-    git@github.com:kalak-io/archives_extractor.git
-"
-
-UNIFAI="
-    git@gitlab.com:unifai/free-trial.git
-    --recursive git@gitlab.com:unifai/indiana.git
-    git@gitlab.com:unifai/indiana-api.git
-    git@gitlab.com:unifai/intersport.git
-    git@gitlab.com:unifai/the-agent.git
-    git@gitlab.com:unifai/mvp-theagent.git
-    git@gitlab.com:unifai/click-and-care.git
-    git@gitlab.com:unifai/self-service.git
-"
-
-echo "Pulling git repositories"
-sudo pacman -S --noconfirm --needed openssh
-# Create ssh key
-SSH_KEY=$HOME/.ssh/id_rsa
-if [ ! -f "$SSH_KEY" ]; then
-    echo "Generating ssh key"
-    ssh-keygen -q -t rsa -N '' -f ~/.ssh/id_rsa 2>/dev/null <<< y >/dev/null -b 4096 -C "clement@unifai.fr"
-    ssh-keyscan -t rsa gitlab.com >> ~/.ssh/known_hosts
-    ssh-keyscan -t rsa github.com >> ~/.ssh/known_hosts
-    eval "$(ssh-agent -s)" && ssh-add ~/.ssh/id_rsa
-    wclip -sel clip < $HOME/.ssh/id_rsa.pub
-    echo "Contents of the id_rsa.pub copied!"
-    read -rp 'Did you add your ssh keys in different git services ? Y or N ' answer
-    if [ "$answer" = 'N' ] || [ "$answer" = 'n' ]; then
-        exit 1
-    fi
-fi
-
-# Personal repositories
-mkdir -p $HOME/Documents/projects/personal && cd $_
-for p in $PERSONAL; do
-    git clone $p;
-done
-
-# UNiFAi repositories
-mkdir -p $HOME/Documents/projects/professional/unifai && cd $_
-for u in $UNIFAI; do
-    git clone $u;
-done
-
-cd
-
-
 echo "Finished!"
+echo "You can launch the next scripts : Symlinks, repositories, scale_spotify..."

@@ -3,6 +3,8 @@
 export PATH=$HOME/.pyenv/bin:$HOME/.npm/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kalak/.oh-my-zsh"
+export VISUAL=/usr/bin/vim
+export EDITOR=/usr/bin/vim
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,

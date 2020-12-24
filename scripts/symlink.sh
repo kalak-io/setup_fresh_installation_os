@@ -36,3 +36,5 @@ ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/conky
 # Xresources
 rm -rf $HOME/.Xresources
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/Xresources $HOME/.Xresources
+# rofi
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/ $HOME/.config/rofi

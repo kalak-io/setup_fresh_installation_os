@@ -229,5 +229,8 @@ echo "/swapfile none swap defaults 0 0" | sudo tee -a /etc/fstab
 sudo swapoff -a
 sudo swapon -a
 
+# Set keyboard in US with dead keys
+setxkbmap -layout us -variant intl
+
 echo "Finished!"
 echo "You can launch the next scripts : Symlinks, repositories, scale_spotify..."

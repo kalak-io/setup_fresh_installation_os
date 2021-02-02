@@ -211,10 +211,12 @@ bindsym XF86AudioPrev exec playerctl previous
 # bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh && systemctl suspend
 bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/dynamic_wallpaper.sh lockedBackground zelda && systemctl suspend
 ## Screenshots
-bindsym Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveFullScreen
+# bindsym Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveFullScreen
 # bindsym Shift+Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveArea
 
 ## Autostart
+# Keyboard
+exec_always --no-startup-id setxkbmap -layout us -variant intl
 # Basckground
 exec --no-startup-id $HOME/.config/i3/dynamic_wallpaper.sh setBackground zelda
 # Set startup volume

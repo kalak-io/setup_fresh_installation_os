@@ -39,7 +39,7 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec --no-startup-id i3-sensible-terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -177,7 +177,7 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
   status_command i3status
-    tray_output none
+    # tray_output none
     position top
     font pango:UbuntuMono 11
     separator_symbol "  "
@@ -196,33 +196,78 @@ bar {
 }
 
 ### Customization ###
+## Power management
+set $Locker i3lock -c 000000 && sleep 1
+bindsym $mod+l exec --no-startup-id $Locker
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym Menu mode "$mode_system"
+
+## Manual management of external displays
+set $mode_display Ext Screen (v) VGA ON, (h) HDMI ON, (x) VGA OFF, (y) HDMI OFF
+mode "$mode_display" {
+    bindsym v exec --no-startup-id xrandr --output VGA1 --auto --right-of LVDS1, mode "default"
+    bindsym h exec --no-startup-id xrandr --output HDMI1 --auto --right-of LVDS1, mode "default"
+    bindsym x exec --no-startup-id xrandr --output VGA1 --auto --off, mode "default"
+    bindsym y exec --no-startup-id xrandr --output HDMI1 --auto --off, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+x mode "$mode_display"
+
+## Screenshots
+set $mode_screenshots Fullscreen (f) or Select (s)
+mode "$mode_screenshots" {
+    set $filename "Screenshot_`date +%Y-%m-%d_%H-%M-%S`.png"
+    bindsym --release f exec scrot -d $filename -e 'mkdir -p ~/Pictures/ && mv $f ~/Pictures/ && xclip -selection clipboard -t image/png -i ~/Pictures/`ls -1 -t ~/Pictures/ | head -1`', mode "default"
+    bindsym --release s exec scrot -s $filename -e 'mkdir -p ~/Pictures/ && mv $f ~/Pictures/ && xclip -selection clipboard -t image/png -i ~/Pictures/`ls -1 -t ~/Pictures/ | head -1`', mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+Print mode "$mode_screenshots"
+
 ## Autoback
 workspace_auto_back_and_forth yes
 ## Backlight
 # increase screen brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # decrease screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 ## Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
-## Lock screen
-# bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/de/i3lock.sh && systemctl suspend
-bindsym $mod+l exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/dynamic_wallpaper.sh lockedBackground zelda && systemctl suspend
-## Screenshots
-# bindsym Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveFullScreen
-# bindsym Shift+Print exec $HOME/Documents/projects/personal/setup_fresh_installation_os/config/i3/screenshot.sh saveArea
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
 
 ## Autostart
+# Autolock after 5 minutes of inactivity
+exec --no-startup-id xautolock -time 3 -locker i3lock -c 000000 &
 # Keyboard
-exec_always --no-startup-id setxkbmap -layout us -variant intl
-# Basckground
+exec --no-startup-id setxkbmap -layout us -variant intl
+# Background
 exec --no-startup-id $HOME/.config/i3/dynamic_wallpaper.sh setBackground zelda
 # Set startup volume
 exec_always --no-startup-id pactl set-sink-volume 0 '20%'
 # Disable beeps
-exec_always --no-startup-id xset -b
+exec --no-startup-id xset -b
+# Disable title click
+bindsym button1 nop
 # Launch softwares
 exec --no-startup-id redshift
 exec --no-startup-id slack
@@ -236,3 +281,8 @@ assign [class="^Slack$"] $ws10
 
 ## Disable border for all windows
 for_window [class="^.*"] border none
+
+## Correct handling of floating dialogs
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable

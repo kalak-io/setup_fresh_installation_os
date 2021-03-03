@@ -126,6 +126,11 @@ mkdir -p $HOME/.vim/bundle/
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qall && python $HOME/.vim/bundle/youcompleteme/install.py --ts-completer
 
+echo "Configuring Neovim"
+sudo pacman -S --noconfirm --needed neovim
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/nvim $HOME/.config/nvim
+nvim +PlugInstall +qall
+
 echo "Installing Python Packages"
 pip3 install pre-commit virtualenv virtualenvwrapper
 

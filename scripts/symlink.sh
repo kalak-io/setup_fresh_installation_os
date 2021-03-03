@@ -37,4 +37,6 @@ ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/conky
 rm -rf $HOME/.Xresources
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/Xresources $HOME/.Xresources
 # rofi
-ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/ $HOME/.config/rofi
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/rofi $HOME/.config/rofi
+# nvim
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/nvim $HOME/.config/nvim

@@ -197,7 +197,7 @@ bar {
 
 ### Customization ###
 ## Power management
-set $Locker i3lock -c 000000 && sleep 1
+set $Locker i3lock -c 000000 --ignore-empty-password --show-failed-attempts --nofork && sleep 1
 bindsym $mod+l exec --no-startup-id $Locker
 
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
@@ -276,8 +276,8 @@ exec --no-startup-id xset -b
 bindsym button1 nop
 # Launch softwares
 exec --no-startup-id redshift
-exec --no-startup-id slack
 exec --no-startup-id conky -d
+exec_always --no-startup-id $HOME/.config/i3/scripts/autostart.sh
 
 ## Assignation
 assign [class="^firefox$"] $ws1

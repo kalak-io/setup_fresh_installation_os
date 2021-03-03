@@ -35,6 +35,7 @@ Plugin 'joaohkfaria/vim-jest-snippets'
 Plugin 'mileszs/ack.vim'
 Plugin 'ap/vim-css-color'
 Plugin 'ryanoasis/vim-devicons'
+Plugin 'tibabit/vim-templates'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -217,6 +218,11 @@ let g:UltiSnipsEditSplit="vertical"
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
+
+"" Templates
+let g:tmpl_search_paths = ['~/Templates']
+let g:tmpl_auto_initialize = 0
+
 "*****************************************************************************
 "" Mappings
 "*****************************************************************************

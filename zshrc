@@ -1,6 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
-export PATH=$HOME/.pyenv/bin:$HOME/.npm/bin:$PATH
+export PATH=$HOME/.pyenv/bin:$HOME/.npm/bin:$HOME/.local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kalak/.oh-my-zsh"
 export VISUAL=/usr/bin/vim
@@ -156,8 +156,8 @@ alias self-service="unifai && cd self-service && cd frontend"
 
 alias wikit="wikit -b --lang fr"
 
-alias -s vue=vim
-alias -s js=vim
+alias -s vue=nvim
+alias -s js=nvim
 
 # Disable auto correct
 alias npx="nocorrect npx"
@@ -174,3 +174,9 @@ alias pip='pip3'
 
 # Fix scaling Spotify
 alias spotify="spotify --force-device-scale-factor=1.5"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+if type nvim > /dev/null 2>&1; then
+  alias vim='nvim'
+fi

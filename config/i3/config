@@ -217,6 +217,9 @@ mode "$mode_system" {
 bindsym Menu mode "$mode_system"
 
 ## Manual management of external displays
+set $mainMonitor eDP1
+set $workMonitor DP1
+
 set $mode_display Ext Screen (v) eDP1 ON, (h) DP1 ON, (x) eDP1 OFF, (y) DP1 OFF
 mode "$mode_display" {
     bindsym v exec --no-startup-id xrandr --output eDP1 --auto --right-of LVDS1, mode " default"
@@ -282,6 +285,7 @@ exec_always --no-startup-id $HOME/.config/i3/scripts/autostart.sh
 ## Assignation
 assign [class="^firefox$"] $ws1
 assign [class="^Chromium$"] $ws2
+assign [class="^Google-chrome$"] $ws2
 for_window [class="^Spotify$"] move --no-auto-back-and-forth to workspace $ws9
 assign [class="^Slack$"] $ws10
 

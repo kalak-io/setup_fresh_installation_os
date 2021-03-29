@@ -20,6 +20,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'alvan/vim-closetag'
   Plug 'mg979/vim-visual-multi'
   Plug 'tomtom/tcomment_vim'
+  Plug 'amadeus/vim-convert-color-to'
 call plug#end()
 filetype plugin indent on    " required
 
@@ -145,6 +146,7 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 " CoC
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-css', 'coc-vetur', 'coc-emmet', 'coc-eslint', 'coc-html', 'coc-jedi', 'coc-prettier', 'coc-pairs']
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
+let g:python3_host_prog = '$HOME/.virtualenvs/nvim/bin/python'
 
 " NerdTree
 let g:NERDTreeShowHidden = 1
@@ -228,6 +230,9 @@ call CreateShortcut("C-h", ":%s/", "in", "noTrailingIInInsert")
 "Ctrl K - Search in files with ag
 call CreateShortcut("C-k", ":Ack! ", "in", "noTrailingIInInsert")
 
+"Shift K - Search on google
+set keywordprg=search_google 
+
 " Ctrl L - Delete all lines
 call CreateShortcut("C-l", "ggdG", "in")
 
@@ -296,6 +301,7 @@ autocmd FileType vuejs set filetype=vue
 if has("autocmd")
   augroup templates
     autocmd BufNewFile *.sh 0r ~/.config/nvim/templates/skeleton.sh
+    autocmd BufNewFile *.py 0r ~/.config/nvim/templates/skeleton.py
     autocmd BufNewFile *.spec.js 0r ~/.config/nvim/templates/skeleton.spec.js | :%s/FILE/\=expand('%:t:r')/g | :%s/.spec//g
     autocmd BufNewFile *.stories.js 0r ~/.config/nvim/templates/skeleton.stories.js | :%s/FILE/\=expand('%:t:r')/g | :%s/.stories//g
     autocmd BufNewFile *.vue 0r ~/.config/nvim/templates/skeleton.vue | :%s/FILE/\=expand('%:t:r')/g

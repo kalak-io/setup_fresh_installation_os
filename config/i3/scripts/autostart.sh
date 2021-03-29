@@ -3,7 +3,8 @@
 DOW=$(date +%u)
 HOUR=$(date +%H)
 if [ $DOW -lt 6 -a $HOUR -lt 18 ]; then
-  chromium --disable-gpu &
+  # redshift &
+  google-chrome-stable --disable-gpu &
   firefox &
   slack &
 fi

@@ -27,3 +27,5 @@
 	rebase = false
 [help]
 	autocorrect = 1
+[init]
+	defaultBranch = develop

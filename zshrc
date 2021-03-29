@@ -142,17 +142,19 @@ alias clear_vim="rm -rf $HOME/.vim/tmp_dirs/undodir/*"
 alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
 alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
 alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
-alias replace="f() { ag -0 -l $1 | xargs -0 sed -i 's%$1%$2%g' };f"
+# alias replace="f() { ag -0 -l $1 | xargs -0 sed -i 's%$1%$2%g' };f"
+alias replace="f() { grep -rl $1 . | xargs sed -i "s/'$1'/'$2'/g" };f"
 function mkcd() { mkdir -p "$@" && cd "$_"; }
 alias mkcd="mkcd"
 
 alias personal="cd $HOME/Documents/projects/personal"
 alias dotfiles="cd $HOME/Documents/projects/personal/setup_fresh_installation_os"
+alias crypto="cd $HOME/Documents/projects/personal/personal-crypto-bot"
 alias unifai="cd $HOME/Documents/projects/professional/unifai"
 alias intersport="unifai && cd intersport && cd frontend"
 alias click-and-care="unifai && cd click-and-care && cd frontend"
 alias the-agent="unifai && cd the-agent && cd frontend"
-alias self-service="unifai && cd self-service && cd frontend"
+alias self-service="unifai && cd self-service/frontend"
 
 alias wikit="wikit -b --lang fr"
 

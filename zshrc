@@ -136,6 +136,7 @@ fi
 #
 # Example aliases
 alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
+alias clear_docker="docker rmi $(docker images -f dangling=true -q)"
 alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
 alias clear_history="echo -n '' > $HOME/.*_history"
 alias clear_vim="rm -rf $HOME/.vim/tmp_dirs/undodir/*"

@@ -215,6 +215,12 @@ sudo systemctl enable clamav-daemon.service
 sudo systemctl start clamav-daemon.service
 sudo freshclam
 
+# Enable Reflector
+sudo pacman -S --noconfirm --needed reflector
+sudo rm /etc/xdg/reflector/reflector.conf
+sudo ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/reflector.conf /etc/xdg/reflector/reflector.conf
+sudo systemctl enable reflector.service
+
 ### CONFIGURING SWAP ###
 # Configure swapiness
 echo "Configuring swapiness"

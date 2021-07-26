@@ -70,7 +70,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git docker docker-compose fzf virtualenv virtualenvwrapper)
+plugins=(git docker docker-compose fzf virtualenv virtualenvwrapper adb)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -155,7 +155,7 @@ alias unifai="cd $HOME/Documents/projects/professional/unifai"
 alias intersport="unifai && cd intersport && cd frontend"
 alias click-and-care="unifai && cd click-and-care && cd frontend"
 alias the-agent="unifai && cd the-agent && cd frontend"
-alias self-service="unifai && cd self-service/frontend"
+alias self-service="unifai && cd platform/frontend"
 
 alias wikit="wikit -b --lang fr"
 

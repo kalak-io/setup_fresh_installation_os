@@ -22,3 +22,5 @@ myvenv
 credentials.py
 node_modules/
 jsconfig.json
+config/nvim/plugin
+config/nvim/undodir

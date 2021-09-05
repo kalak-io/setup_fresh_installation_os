@@ -16,7 +16,7 @@
 [commit]
     template = ~/.gitmessage
 [core]
-    editor = vim
+	editor = nvim
 	excludesfile = /home/kalak/.gitignore_global
 [push]
     followTags = true

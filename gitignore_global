@@ -21,3 +21,4 @@ myvenv
 *.sqlite3
 credentials.py
 node_modules/
+jsconfig.json

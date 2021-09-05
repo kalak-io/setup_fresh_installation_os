@@ -4,7 +4,9 @@ export PATH=$HOME/.pyenv/bin:$HOME/.npm/bin:$HOME/.local/bin:$PATH
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kalak/.oh-my-zsh"
 export VISUAL=/usr/bin/vim
-export EDITOR=/usr/bin/vim
+export EDITOR=/usr/bin/nvim
+# export TERMINAL=alacritty
+# export TERM=alacritty
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -136,10 +138,11 @@ fi
 #
 # Example aliases
 alias empty_trash="rm -rf $HOME/.local/share/Trash/**/*"
-alias clear_docker="docker rmi $(docker images -f dangling=true -q)"
+alias clear_docker="docker container prune && docker image prune"
 alias clear_thumbnails="find $HOME/.cache/thumbnails -type f -atime +7 -delete"
 alias clear_history="echo -n '' > $HOME/.*_history"
 alias clear_vim="rm -rf $HOME/.vim/tmp_dirs/undodir/*"
+alias clear_journalctl="sudo journalctl --vacuum-time=4weeks"
 alias extract="python $HOME/Documents/projects/personal/archives_extractor/archives_extractor.py -f"
 alias reduce_pdf="python $HOME/Documents/projects/personal/reduce_pdf_size/reduce_pdf_size.py"
 alias scale_spotify="bash $HOME/Documents/projects/personal/setup_fresh_installation_os/scripts/scale_spotify.sh"
@@ -161,6 +164,7 @@ alias wikit="wikit -b --lang fr"
 
 alias -s vue=nvim
 alias -s js=nvim
+alias -s py=nvim
 
 # Disable auto correct
 alias npx="nocorrect npx"
@@ -174,6 +178,7 @@ alias im='vim'
 alias s='ls'
 alias gi='git'
 alias pip='pip3'
+alias cd-="cd -"
 
 # Fix scaling Spotify
 alias spotify="spotify --force-device-scale-factor=1.5"
@@ -183,3 +188,7 @@ alias spotify="spotify --force-device-scale-factor=1.5"
 if type nvim > /dev/null 2>&1; then
   alias vim='nvim'
 fi
+
+# Avoid bad rm
+# alias rm="rm -i"
+# alias 'rm -rf ~':"echo You are REALLY sure ?"

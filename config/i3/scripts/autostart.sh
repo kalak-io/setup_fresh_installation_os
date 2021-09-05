@@ -6,5 +6,5 @@ if [ $DOW -lt 6 -a $HOUR -lt 18 ]; then
   # redshift &
   google-chrome-stable --disable-gpu &
   firefox &
-  slack &
+  sleep 10; slack &
 fi

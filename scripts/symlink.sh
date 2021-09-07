@@ -42,3 +42,9 @@ ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/rofi 
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/nvim $HOME/.config/nvim
 # Search google
 ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/search_google.sh $HOME/.local/bin
+# alacritty
+rm -rf $HOME/.config/alacritty
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/alacritty $HOME/.config/alacritty
+# fontconfig
+rm -rf $HOME/.config/fontconfig
+ln -s $HOME/Documents/projects/personal/setup_fresh_installation_os/config/fontconfig $HOME/.config/fontconfig

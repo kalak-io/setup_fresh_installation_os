@@ -55,7 +55,7 @@ cd
 ### INSTALLING PACKAGES ###
 # Install base packages
 echo "Installing system packages"
-sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker terminator pulseaudio pulseaudio-alsa alsa-utils htop imagemagick numlockx
+sudo pacman -S --noconfirm --needed base base-devel linux linux-firmware linux-lts linux-lts-headers intel-ucode wget curl networkmanager xf86-video-intel man man-db ufw clamav tlp thermald cronie systemd-swap bluez bluez-utils git vim zsh the_silver_searcher fzf openssh python-pip python-virtualenv nodejs npm transmission-cli docker terminator pulseaudio pulseaudio-alsa alsa-utils htop imagemagick numlockx bat sd exa
 
 # Install codecs (a lot of codecs are dependencies of vlc)
 echo "Installing codecs"

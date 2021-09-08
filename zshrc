@@ -172,6 +172,10 @@ alias vim="nocorrect vim"
 
 alias ag="ag --ignore-dir=coverage"
 
+# Redirection to Rust alternatives of command-line tools
+alias ls='exa --icons'
+alias sed='sd'
+
 # Common Mistakes
 alias ct='cat'
 alias im='vim'

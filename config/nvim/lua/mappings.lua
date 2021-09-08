@@ -37,7 +37,7 @@ map("", "<A-Left>", "gg")
 map("", "<A-Right>", "G")
 
 -- Ctrl A - Begin Line
-map("i", "<C-a>", "0")
+map("i", "<C-a>", "<Esc>0i")
 map("n", "<C-a>", "0i")
 map("v", "<C-a>", "0i")
 
@@ -45,7 +45,7 @@ map("v", "<C-a>", "0i")
 map("", "<C-c>", ":CommentToggle<CR>")
 
 -- Ctrl E - End Line
-map("i", "<C-e>", "$l")
+map("i", "<C-e>", "<Esc>$li")
 map("n", "<C-e>", "$li")
 map("v", "<C-e>", "$li")
 
@@ -70,8 +70,8 @@ map("", "<C-o>", ":NvimTreeToggle<CR>")
 map('', '<C-q>', ':q!<CR>')
 
 -- Ctrl R - Redo
-map("i", "<C-r>", "C-r")
-map("n", "<C-r>", "C-r")
+-- map("i", "<C-r>", "C-r")
+-- map("n", "<C-r>", "C-r")
 
 -- Ctrl S - Save
 map("n", "<C-s>", ":w<CR>")
@@ -85,14 +85,16 @@ map("", "<C-t>", ":tabnew<CR>i")
 map("", "<C-x>", ":tabclose<CR>")
 
 -- Ctrl Z - Undo
-map("i", "<C-z>", "u")
+map("i", "<C-z>", "<Esc>ui")
 map("n", "<C-z>", "u")
 
 -- Pageup - Move up Line
-map("", "<A-Up>", ":m-2<CR>")
+map("i", "<A-Up>", "<Esc>:m-2<CR>i")
+map("n", "<A-Up>", ":m-2<CR>")
+map("v", "<A-Up>", ":m'>-2<CR>")
 
 -- Pagedown - Move down Line
-map("i", "<A-Down>", ":m+<CR>")
+map("i", "<A-Down>", "<Esc>:m+<CR>i")
 map("n", "<A-Down>", ":m+<CR>")
 map("v", "<A-Down>", ":m'>+<CR>")
 

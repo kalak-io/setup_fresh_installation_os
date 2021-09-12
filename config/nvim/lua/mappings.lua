@@ -22,24 +22,22 @@ map("n", "k", "j")
 map("n", "j", "h")
 
 -- Enter
-map("", "<CR>", "i<CR>")
+map("", "<CR>", "<Esc>i<CR>")
 
 -- Backspace
-map("", "<Backspace>", "i<Backspace>")
+map("", "<Backspace>", "<Esc>i<Backspace>")
 
 -- Space
-map("", "<Space>", "i<Space>")
+map("", "<Space>", "<Esc>i<Space>")
 
 -- Home - Go To Begin
-map("", "<A-Left>", "gg")
+map("", "<A-Left>", "<Esc>gg")
 
 -- End - Go To End
-map("", "<A-Right>", "G")
+map("", "<A-Right>", "<Esc>G")
 
 -- Ctrl A - Begin Line
-map("i", "<C-a>", "<Esc>0i")
-map("n", "<C-a>", "0i")
-map("v", "<C-a>", "0i")
+map("", "<C-a>", "<Esc>0i")
 
 -- Ctrl C - Comment
 map("", "<C-c>", ":CommentToggle<CR>")

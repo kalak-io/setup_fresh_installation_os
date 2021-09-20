@@ -151,7 +151,7 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+# bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -206,8 +206,8 @@ bar {
 bindsym $mod+n exec --no-startup-id $term --class Neovim -e nvim -c 'Telescope find_files'
 
 ## Terminator keybinding
-bindsym $mod2+d split h; exec --no-startup-id alacritty
-bindsym Shift+$mod2+d split v; exec --no-startup-id alacritty
+bindsym $mod2+d split h; exec --no-startup-id ~/.config/i3/scripts/i3_shell.sh
+bindsym Shift+$mod2+d split v; exec --no-startup-id ~/.config/i3/scripts/i3_shell.sh
 ## Power management
 set $Locker i3lock -c 000000 --ignore-empty-password --show-failed-attempts --nofork && sleep 1
 bindsym $mod+Escape exec --no-startup-id $Locker
@@ -226,7 +226,7 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-bindsym $mod+BackSpace mode "$mode_system"
+bindsym $mod+Shift+e mode "$mode_system"
 
 ## Manual management of external displays
 set $mainMonitor eDP1
